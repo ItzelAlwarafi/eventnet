@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { BASE_URL } from '../globals';
 import { useState } from 'react';
 import { Link } from 'react-router-dom'
 const SearchBar = () => {
@@ -7,10 +6,7 @@ const SearchBar = () => {
   const [results, setResults] = useState([])
   
   const handleSearch = async() => {
-    const response = await axios.get(`${BASE_URL}search.php?s=${encodeURIComponent(searchTerm)}`)
-    setResults(response.data.venue)
-  };
-
+    const response = await axios.get(
   
   const handleKeydown = (event) => {
     if (event.key === 'Enter') {
@@ -30,6 +26,11 @@ const SearchBar = () => {
       <div className='dropdown-content'>
         {results.map((result, index) =>
           <Link key={index} to={`/venues/${result.idVenue}`}>{result.strVenue}</Link>)}
+          <Link key={index} to={`/locations/${result.idLocation}`}>{result.strLocation}</Link>)}
+          <Link key={index} to={`/type/${result.idType}`}>{result.strSpaceType}</Link>)}
+          <Link key={index} to={`//venues/:id/booking/${result.idBookingForm}`}>{result.strVenue}</Link>)}
+          <Link key={index} to={`/Register/${result.idAddVenue}`}>{result.strAddVenue}</Link>)}
+
       </div>
       
     </div>

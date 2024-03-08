@@ -15,10 +15,11 @@ const Sidebar = () => {
       </button>
       <ul>
         {/* Example menu items */}
-        <li><a href="#AddVenue">Add a Venue</a></li>
-        <li><a href="#Types">Type of space</a></li>
-        <li><a href="#Location">Which City would you like to have your event?</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <Link to="locations" className="Side-link">Locations</Link>
+        <Link to="type" className="Side-link">Type of space</Link>
+        <Link to="/venues/:id/booking" className="Side-link">Booking a Venue</Link>
+        <Link to="/venues/:id" className="Side-link">Venue</Link>
+        <Link to="register" className="Side-link">Register</Link>
       </ul>
     </div>
   );
