@@ -1,4 +1,19 @@
-const Venue = require('../models')
+const {Venue, Location, Type} = require('../models')
+
+const universalSearch = async(req, res) => {
+    try {
+        const {search} = req.params
+        const regex = new RegExp(search, 'i')
+        const location = await Location.find({$or: [{city: {$regex: regex}}, {state: {$regex: regex}}, {country: {$regex: regex}}]})
+        const type = await Type.find({$or: [{environment: {$regex: regex}}, {type: {$regex: regex}}]})
+
+        const venues = await Venue.find({$or: [{name: {$regex: regex}}, {owner: {$regex: regex}}, {location: location[0]._id}, {type: type[0]._id} ]})
+        res.json(venues)
+        
+    } catch (e) {
+        return res.status(500).send(e.message)
+    }
+}
 
 const getAllVenues = async (req, res) => {
     try{
@@ -66,5 +81,6 @@ module.exports = {
     getVenueById,
     updateVenue,
     createVenue,
-    deleteVenue
+    deleteVenue,
+    universalSearch
 }
