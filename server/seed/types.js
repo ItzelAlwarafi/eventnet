@@ -1,14 +1,32 @@
 const db = require('../db')
 const { Type } = require('../models')
 
-b.on('error', console.error.bind(console, 'MongoDB connection error:'))
+db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 const main = async () => {
     
+const types = [
+{
+  type: 'Event Hall',
+  environment: true
+  
+
+},
+{
+  type:'Banquet',
+  environment: true
+  
+},
+{
+  type:'Ballroom',
+  environment: true
+  
+}
+
+]
 
 
-
-  await Airport.insertMany(airports)
+  await Type.insertMany(types)
  
   console.log('Types Seeded! ')
 }
