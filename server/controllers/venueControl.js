@@ -7,7 +7,7 @@ const universalSearch = async(req, res) => {
         const location = await Location.find({$or: [{city: {$regex: regex}}, {state: {$regex: regex}}, {country: {$regex: regex}}]})
         const type = await Type.find({$or: [{environment: {$regex: regex}}, {type: {$regex: regex}}]})
 
-        const venues = await Venue.find({$or: [{name: {$regex: regex}}, {owner: {$regex: regex}}, {location: location._id}, {type: type._id} ]})
+        const venues = await Venue.find({$or: [{name: {$regex: regex}}, {owner: {$regex: regex}}, {location: location[0]._id}, {type: type[0]._id} ]})
         res.json(venues)
         
     } catch (e) {
