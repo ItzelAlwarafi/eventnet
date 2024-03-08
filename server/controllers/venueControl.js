@@ -65,7 +65,7 @@ const updateVenue = async(req, res) => {
 const deleteVenue = async(req, res) => {
     try {
         const{id} = req.params
-        const deleted = await venue.findByIdAndDelete(id)
+        const deleted = await Venue.findByIdAndDelete(id)
         if(deleted) {
             return res.status(200).send("Venue deleted")
         }
