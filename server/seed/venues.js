@@ -2,7 +2,7 @@ const db = require('../db')
 
 const { Venue , Location, Type } = require('../models')
 
-b.on('error', console.error.bind(console, 'MongoDB connection error:'))
+db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 const main = async () => {
   const ny = await Location.find({city:'New York'})
