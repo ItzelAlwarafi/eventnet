@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 3001
 const locationControl = require('./controllers/locationControl')
 const typeControl = require('./controllers/typeControl')
 const venueControl = require('./controllers/venueControl')
+const UserController = require('./controllers/UserController')
 
 const app = express()
 
@@ -36,16 +37,23 @@ app.get('/search/:search', venueControl.universalSearch)
 app.get('/locations/:id', locationControl.getLocationById)
 app.get('/types/:id', typeControl.getTypeById)
 app.get('/venues/:id', venueControl.getVenueById)
+app.get('/users', UserController.getAllUsers)
+app.get('/users/id/:id', UserController.getUserById)
+app.get('/users/username/:username', UserController.getUserByUsername)
 
 // CRUD Routes - Locations
 app.post('/locations/', locationControl.createLocation)
-app.put('/locations/:id', locationControl.updateLocation)
+app.patch('/locations/:id', locationControl.updateLocation)
 app.delete('/locations/:id', locationControl.deleteLocation)
 // CRUD Routes - Types
 app.post('/types/', typeControl.createType)
-app.put('/types/:id', typeControl.updateType)
+app.patch('/types/:id', typeControl.updateType)
 app.delete('/types/:id', typeControl.deleteType)
 // CRUD Routes - Venues
 app.post('/venues/', venueControl.createVenue)
-app.put('/venues/:id', venueControl.updateVenue)
+app.patch('/venues/:id', venueControl.updateVenue)
 app.delete('/venues/:id', venueControl.deleteVenue)
+
+app.post('/users', UserController.createUser)
+app.patch('/users/:id', UserController.editUser)
+app.delete('/users/:id', UserController.deleteUser)
