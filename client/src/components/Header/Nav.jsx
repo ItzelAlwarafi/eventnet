@@ -12,7 +12,11 @@ const Nav = () => {
       <div className='navLinks'>
         {/* Links to navigate to different routes */}
         <Link to={`/locations/${Location}`} className='nav-link' onClick={window.location.reload}>Locations</Link>
-        <Link to="/type" className="nav-link">Types of space</Link>
+        <Link to="locations" className="nav-link">Locations</Link>
+        <Link to="type" className="nav-link">Type of space</Link>
+        <Link to="/venues/:id/booking" className="nav-link">Booking a Venue</Link>
+        <Link to="/venues/:id" className="nav-link">Venue</Link>
+        <Link to="register" className="nav-link">Register</Link>
         
       </div>
     </nav>
