@@ -1,11 +1,11 @@
 const {Schema} =require ('mongoose')
 
-const venue = new Schema (
+const Venue = new Schema (
 
 {
     name:{type:String,require:true},
-    location:{type:Schema.Types.ObjectId, ref :'location_id'},
-    type:{type:Schema.Types.ObjectId, ref :'type_id'},
+    location:{type:Schema.Types.ObjectId, ref :'Location'},
+    type:{type:Schema.Types.ObjectId, ref :'Type'},
     price:{ type: Number, required: true },
     onwer:{type:String,require:true},
     owner_email:{type:String,require:true},
@@ -14,4 +14,4 @@ const venue = new Schema (
 { timestamps: true }
 
 )
-module.export = venue
+module.exports = Venue

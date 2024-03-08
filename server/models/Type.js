@@ -1,11 +1,11 @@
 const {Schema} =require ('mongoose')
 
 
-const type = new Schema(
+const Type = new Schema(
     {
-        Environment:{type:Boolean,require:true},
+        environment:{type:String,require:true},
         type:{type:String,require:true}
     },
     {timestamps: true }
 )
-module.export = type
+module.exports = Type

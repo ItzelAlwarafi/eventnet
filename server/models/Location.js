@@ -1,7 +1,7 @@
 const {Schema} =require ('mongoose')
 
 
-const location = new Schema (
+const Location = new Schema (
     {
         city:{type:String,require:true},
         state:{type:String,require:true},
@@ -11,4 +11,4 @@ const location = new Schema (
 )
 
 
-module.export = location
+module.exports = Location
