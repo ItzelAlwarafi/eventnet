@@ -31,6 +31,7 @@ app.get('/', (req, res) => {
 app.get('/locations', locationControl.getAllLocations)
 app.get('/types', typeControl.getAllTypes)
 app.get('/venues', venueControl.getAllVenues)
+app.get('/search/:search', venueControl.universalSearch)
 // Find by ID Routes - All
 app.get('/locations/:id', locationControl.getLocationById)
 app.get('/types/:id', typeControl.getTypeById)

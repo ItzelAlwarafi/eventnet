@@ -1,5 +1,6 @@
-import Nav from './Navbar'
+import Nav from './Nav'
 import SearchBar from './Searchbar'
+
 const Header = () => {
     return (
         <div className='FullNav'> 
