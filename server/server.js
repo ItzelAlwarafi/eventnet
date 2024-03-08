@@ -24,7 +24,7 @@ app.listen(PORT, () => {
 
 // Sytem Check
 app.get('/', (req, res) => {
-    res.send("Welcome to the party")
+    res.send("Welcome to your party")
 })
 
 // Find All Routes - All
