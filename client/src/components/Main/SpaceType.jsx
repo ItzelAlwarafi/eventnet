@@ -1,4 +1,5 @@
 import {useNavigate} from 'react-router-dom'
+import axios from 'axios'
 
 export default function SpaceType (props) {
     let navigate = useNavigate()
@@ -8,10 +9,10 @@ export default function SpaceType (props) {
     }
     
     return (
-        <div className='location-list-page'>
+        <div className='spacetype-list-page'>
             <div className='search-list-title'>Space Types</div>
             <div className="search-list-grid">
-                {props.locations.map((type) => (
+                {props.types.map((type) => (
                     <div className="search-list-card" onClick={() => showType(type)} key={type.id}>
                          {/* <img src={type.img} alt={type.name} className="list-card-image"/> */}
                         <div className="list-card-title">{type.type}</div>

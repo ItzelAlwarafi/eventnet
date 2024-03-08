@@ -1,13 +1,33 @@
 import {useNavigate} from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 export default function Venue (props) {
     let navigate = useNavigate()
 
-    const showVenue = (venue) => {
-        navigate(`${venue.id}`)
-    }
+    const [venue, setVenue] = useState('')
+    let {id} = useParams()
+
+    useEffect(() => {
+        const getLocations = async() => {
+            const response = await axios.get('http://localhost:3001/locations')
+            setLocations(response.data)
+        }
+        const getTypes = async() => {
+            const response = await axios.get('http://localhost:3001/types')
+            setTypes(response.data)
+        }
+        const getVenues = async() => {
+            const response = await axios.get('http://localhost:3001/venues')
+            setVenues(response.data)
+        }
+
+        getLocations()
+        getTypes()
+        getVenues()
+    }, [])
     
-    return (
+    return venue ? (
         <div className="venue-list-page">
             <div className="search-list-title">Venues</div>
             <div className="search-list-grid">
@@ -29,5 +49,7 @@ export default function Venue (props) {
                 ))}
             </div>
         </div>
+    ) : (
+        <div className="loading">Loading...</div>
     )
 }
