@@ -1,7 +1,7 @@
 const db = require('../db')
 const { Location} = require('../models')
 
-b.on('error', console.error.bind(console, 'MongoDB connection error:'))
+db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 const main = async () => {
     
