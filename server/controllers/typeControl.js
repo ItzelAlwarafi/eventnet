@@ -1,4 +1,4 @@
-const Type = require('../models/Type')
+const Type = require('../models')
 
 const getAllTypes = async (req, res) => {
     try{
