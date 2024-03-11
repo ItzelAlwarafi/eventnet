@@ -16,7 +16,7 @@ export default function UserSignUpLogIn() {
     phone_Number: '',
     address_: '',
     password: '',
-  };
+  }
 
   const [formState, setFormState] = useState(formInitialState) 
   const [showSignUp, setShowSignUp] = useState(false)
