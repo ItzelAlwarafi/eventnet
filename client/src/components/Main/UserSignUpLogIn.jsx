@@ -12,15 +12,15 @@ export default function UserSignUpLogIn() {
     username: '',
     first_name: '',
     last_name: '',
-    e_mail: '',
-    phone_Number: '',
-    address_: '',
+    email: '',
     password: '',
   }
 
   const [formState, setFormState] = useState(formInitialState) 
   const [showSignUp, setShowSignUp] = useState(false)
   const [confirmPassword, setConfirmPassword] = useState('')
+ const[logInMessage,setLogInMessage] =useState('')
+
 
   const hasSpecialCharacter = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(formState.password)
 
@@ -35,20 +35,25 @@ export default function UserSignUpLogIn() {
   const handleLogIn = async (event) => {
     event.preventDefault()
     try {
-      let response = await axios.get('http://localhost:3001/') // assign route to users 
-      if (formState.username === response.data && formState.password === response.data.password) {
-        console.log('user exist:', response.data)
+      const response = await axios.get('http://localhost:3001/users')
+  
+    
+      const user = response.data.find(user => user.username === formState.username)
+  
+      if (user && user.password === formState.password) {
+        console.log('Login successful:', user)
         setLoggedIn(true)
+        setLogInMessage(`Welcome ${user.first_name}`)
       } else {
-        setShowSignUp(true)
-        console.log('user doesnt exist')
+        console.log('Invalid username or password')
+        setLogInMessage('Invalid username or password')
       }
     } catch (error) {
-      console.error('Error getting users', error)
+      console.error('Error logging in:', error)
+     
     }
-    console.log('Log in clicked')
-  };
-
+  }
+  
   useEffect(() => {
     console.log(userType)
     console.log(formState)
@@ -58,16 +63,28 @@ export default function UserSignUpLogIn() {
     event.preventDefault()
 
     if (formState.password === confirmPassword && hasSpecialCharacter) {
-      try {
-        console.log('summited', formState)
-       // let response = await axios.post('http://localhost:3001/', formState)// assign route to users 
-            // console.log('Form submitted:', response.data)
-      } catch (error) {
-        console.error('Error submitting form:', error)
+        try {
+         
+          const formDataJson = {
+            first_name: formState.first_name,
+            last_name: formState.last_name,
+            username: formState.username,
+            email: formState.email,
+            password: formState.password,
+            owner: formState.owner,
+            host: formState.host,
+          }
+    
+        
+          const response = await axios.post('http://localhost:3001/users', formDataJson);
+          console.log('Form submitted:', response.data);
+        } catch (error) {
+          console.error('Error submitting form:', error);
+        }
+      } else {
+        console.log("Passwords do not match or password doesn't contain special characters");
       }
-    } else {
-      console.log("Passwords do not match or password doesn't contain special characters")
-    }
+    
   }
 
   return (
@@ -98,14 +115,8 @@ export default function UserSignUpLogIn() {
               <label htmlFor='last_name'>Name:</label>
               <input type='text' id='last_name' placeholder='Last name' value={formState.last_name} onChange={handleChange} required />
 
-              <label htmlFor='e_mail'>E-mail:</label>
-              <input type='email' id='e_mail' placeholder='Email' value={formState.e_mail} onChange={handleChange} required />
-
-              <label htmlFor='phone_Number'>Phone Number:</label>
-              <input type='tel' id='phone_Number' placeholder='Phone number' value={formState.phone_Number} onChange={handleChange} required />
-
-              <label htmlFor='address_'>Address:</label>
-              <input type='text' id='address_' placeholder='Address' value={formState.address_} onChange={handleChange} required />
+              <label htmlFor='email'>Email:</label>
+              <input type='email' id='email' placeholder='Email' value={formState.email} onChange={handleChange} required />
 
               <label htmlFor='password'>Create a password:</label>
               <input type='password' id='password' placeholder='Password' minLength={7} value={formState.password} onChange={handleChange} required />
@@ -139,6 +150,9 @@ export default function UserSignUpLogIn() {
             </div>
             <button type="submit">Log In</button>
           </form>
+             {logInMessage && (
+             <p className="message"> {logInMessage} </p>
+            )}
         </div>
       )}
 
