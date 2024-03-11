@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useParams } from 'react-router-dom'
 
 export default function AddVenue () {
+
+    let { id } = useParams()
 
     const initialState = {
         name: '',
         location: '',
         type: [],
         price: '',
-        owner: '',
-        email: '',
-        phone: ''
+        owner: id
     }
 
     const initialType = {
@@ -105,7 +106,7 @@ export default function AddVenue () {
                                 <label htmlFor={type._id}>{type.environment} {type.type}</label>
                             </div>
                         ) }
-                    <label htmlFor='add-type'>Add a type of venue</label>
+                    <label htmlFor='add-type'>Other:</label>
                     <div id='add-type'>
                         <select id='environment' onChange={handleTypeChange} value={typeState.environment} >
                             <option value='' defaultValue>Select an environment</option>
@@ -128,15 +129,6 @@ export default function AddVenue () {
                         ))}
                         <button type='button' onClick={handleImageNumber}>+</button>
                     </div>
-    
-                    <label htmlFor='owner'>Owner of venue:</label>
-                    <input type='text' id='owner' onChange={handleChange} value={formState.owner} />
-    
-                    <label htmlFor='owner_email'>Email address:</label>
-                    <input type='email' id='owner_email' onChange={handleChange} value={formState.email} />
-    
-                    <label htmlFor='owner_phoneNumber'>Phone number</label>
-                    <input type='number' id='owner_phoneNumber' onChange={handleChange} value={formState.phone} />
 
                     <p>Please review your details before submitting this form to ensure everything is correct.</p>
                     <button type='submit'>Register</button>
