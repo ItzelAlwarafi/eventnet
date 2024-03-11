@@ -10,8 +10,6 @@ const Nav = () => {
         {/* Links to navigate to different routes */}
         <Link to="locations" className="nav-link">Locations</Link>
         <Link to="type" className="nav-link">Types of space</Link>
-        <Link to="register" className="nav-link">Register</Link>
-        
       </div>
     </nav>
   )
