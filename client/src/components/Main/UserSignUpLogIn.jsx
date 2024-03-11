@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from 'react'
-import userContext from '../userContext'
+import userContext from '../../userContext'
 import axios from 'axios'
 
 export default function UserSignUpLogIn() {
