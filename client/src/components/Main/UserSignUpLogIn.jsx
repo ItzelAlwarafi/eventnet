@@ -89,10 +89,10 @@ export default function UserSignUpLogIn() {
 
   return (
     <>
-      <button onClick={() => { setShowSignUp(false); setUserType('eventHost'); setFormState(formInitialState); }}>Log In</button>
-
-      <button onClick={() => { setShowSignUp(true); setFormState(formInitialState); }}>Sign Up</button>
-
+    <div className='toggle'>
+     <button className='LogInBtn' onClick={() => { setShowSignUp(false); setUserType('eventHost'); setFormState(formInitialState); }}>Log In</button>
+     <button className='SignUpBtn' onClick={() => { setShowSignUp(true); setFormState(formInitialState); }}>Sign Up</button>
+     </div>
       {showSignUp ? (
         <div className='BookContainer'>
           <form className="formContainer" onSubmit={handleSubmit}>
