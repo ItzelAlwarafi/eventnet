@@ -3,6 +3,7 @@ import userContext from '../../userContext'
 import axios from 'axios'
 
 
+
 export default function UserSignUpLogIn() {
   const { userType, setUserType } = useContext(userContext)
   const { loggedIn, setLoggedIn } = useContext(userContext)
@@ -100,7 +101,7 @@ const[className,setClassName] = useState('')
 
   return (
     <>
-  
+
     <div className='toggle'>
      <button className='LogInBtn' onClick={() => { setShowSignUp(false); setUserType('eventHost'); setFormState(formInitialState); }}>Log In</button>
      </div>
