@@ -26,7 +26,7 @@ const getUserById = async (req, res) => {
 const getUserByUsername = async (req, res) => {
     try {
         const {username} = req.params
-        const user = await User.find({username: username})
+        const user = await User.find({username: username}).populate('venues_owned').populate('venues_liked')
         if (user) {
             return res.json(user)
         } else {

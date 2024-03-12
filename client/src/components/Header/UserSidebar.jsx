@@ -7,30 +7,32 @@ import { useContext } from 'react'
 export default function UserSidebar () {
 
     const {user} = useContext(userContext)
+    const rentals = user[0].venues_owned.length
+    const favourited = user[0].venues_liked.length
 
     return (
         <div>
             <FontAwesomeIcon icon={faUser} />
-            <h1>{user.first_name} {user.last_name}</h1>
-            <h4>{user.username}</h4>
+            <h1>{user[0].first_name} {user[0].last_name}</h1>
+            <h4>{user[0].username}</h4>
             <div>
                 <div>
-                    <p>{RENTED}</p>
-                    <p>RENTED</p>
+                    <p>{favourited}</p>
+                    <p>FAVOURITED</p>
                 </div>
                 <div>
-                    <p>{RENTALS}</p>
+                    <p>{rentals}</p>
                     <p>RENTALS</p>
                 </div>
                 <div>
-                    <p>{RATING}</p>
+                    <p>4</p>
                     <p>RATING</p>
                 </div>
             </div>
             
-            { user.host ? <Link to='PLACEHOLDER' >FAVOURITES</Link> : null }
-            { user.owner? <Link to='OWNED' >OWNED</Link> : null }
-            <Link to='ACCOUNT' >ACCOUNT</Link>
+            { user[0].host ? <Link to={`/account/${user[0]._id}/favourites`} >FAVOURITES</Link> : null }
+            { user[0].owner? <Link to={`/account/${user[0]._id}/venues`} >OWNED</Link> : null }
+            <Link to={`/account/${user[0]._id}`} >ACCOUNT</Link>
         </div>
     )
 }
