@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import './Sidebar.css';
 
 const Sidebar = () => {
   //Toggle sidebar visibility
