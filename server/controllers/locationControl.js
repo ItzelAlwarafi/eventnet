@@ -1,8 +1,8 @@
-const Location = require('../models')
+const {Location} = require('../models')
 
 const getAllLocations = async (req, res) => {
     try{
-        const locations = await Location.find()
+        const locations = await Location.find({})
         res.json(locations)
     } catch (e) {
         return res.status(500).send(e.message)

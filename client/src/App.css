@@ -4,8 +4,27 @@
   justify-content: center;
   align-items: center;
   letter-spacing: 2px;
- 
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
+.bebas-neue-regular {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.GalleryContainer{
+ width: 100%;
+  justify-content: center;
+  
+
+}
+.galleryimg{
+  width: 40vmax;
+  height: 25vmax;
+  margin: 0%;
+}
+
 
 .formContainer , .hostContainer{
   display: flex;
@@ -13,7 +32,54 @@
   font-size: larger;
   font-weight: bold;
   
+  
 }
+
+.toggle{
+
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+
+}
+.LogInBtn,.SignUpBtn{
+  border-radius: 0;
+  border: none;
+
+  
+  
+}
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  cursor: pointer;
+  width: 150px;
+  height: 50px;
+  background-image: linear-gradient(to top, #D8D9DB 0%, #fff 80%, #FDFDFD 100%);
+  border-radius: 30px;
+  border: 1px solid #8F9092;
+  transition: all 0.2s ease;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #606060;
+  text-shadow: 0 1px #fff;
+}
+
+button:hover {
+  box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 3px 3px #CECFD1;
+}
+
+button:active {
+  box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
+}
+
+button:focus {
+  box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
+}
+
 
 .formContainer > input,
 .formContainer > textarea ,.hostContainer > input,select{
@@ -23,9 +89,52 @@
   height: 3rem;
   border-radius: 10px;
   cursor: pointer;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: large;
 }
 .hostContainer >p{
   font-size: small;
+  
+}
+.selectdiv{
+  display: flex;
+  justify-content: center;
+ flex-direction: column;
+ align-content: center;
+ align-items:center 
+}
+.userHost  > label ,input {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: xx-large;
+ 
+}
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 3px solid #000;
+  outline: none;
+  position: relative;
+}
+input[type="radio"]::after {
+  content: "";
+  display: block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+input[type="radio"]:checked::after {
+  opacity: 1;
 }
 .invalid,
 .valid {
@@ -33,6 +142,7 @@
   background-color: #ffffff;
   display: flex;
   margin: 1rem 0;
+  font-family: "Bebas Neue", sans-serif;
 }
 
 form ~ .invalid,
@@ -71,22 +181,14 @@ form ~ .valid {
 .formContainer > textarea {
   height: 10rem;
 }
-.selectdiv > select{
-font-weight: bold;
-font-size: large;
 
-}
-select > option{
-  font-weight: bold;
-font-size: x-large;
-
-}
 .formContainer > label,.hostContainer >label ,select {
   margin-top: 1rem;
 }
 .hostContainer > label {
   display: flex;
   margin-top: 1rem;
+  margin-left: 5px;
   text-align: left !important; 
 }
 #bookDate {
@@ -130,4 +232,3 @@ font-size: x-large;
     width: 90vw;
     max-width: 90vw; 
   }
-}

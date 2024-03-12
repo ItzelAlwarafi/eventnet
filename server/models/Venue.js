@@ -8,9 +8,7 @@ const Venue = new Schema (
     location:{type:Schema.Types.ObjectId, ref :'Location'},
     type:[{type:Schema.Types.ObjectId, ref :'Type'}],
     price:{ type: Number, required: true },
-    owner:{type:String,require:true},
-    owner_email:{type:String,require:true},
-    owner_phoneNumber:{type:String,require:true},
+    owner:{type:Schema.Types.ObjectId, ref: 'User'},
     img:[{type:String,required:true}]
 },
 { timestamps: true }

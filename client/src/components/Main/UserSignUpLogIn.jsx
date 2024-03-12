@@ -1,10 +1,13 @@
 import { useState, useContext, useEffect } from 'react'
-import userContext from '../userContext'
+import userContext from '../../userContext'
 import axios from 'axios'
+
+
 
 export default function UserSignUpLogIn() {
   const { userType, setUserType } = useContext(userContext)
   const { loggedIn, setLoggedIn } = useContext(userContext)
+  const {user, setUser} = useContext(userContext)
 
   const formInitialState = {
     owner: '',
@@ -12,15 +15,15 @@ export default function UserSignUpLogIn() {
     username: '',
     first_name: '',
     last_name: '',
-    e_mail: '',
-    phone_Number: '',
-    address_: '',
+    email: '',
     password: '',
   }
 
   const [formState, setFormState] = useState(formInitialState) 
   const [showSignUp, setShowSignUp] = useState(false)
   const [confirmPassword, setConfirmPassword] = useState('')
+  const [logInMessage,setLogInMessage] =useState('')
+const[className,setClassName] = useState('')
 
   const hasSpecialCharacter = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(formState.password)
 
@@ -31,24 +34,33 @@ export default function UserSignUpLogIn() {
     }
     setFormState({ ...formState, [id]: value })
   }
+  
 
   const handleLogIn = async (event) => {
     event.preventDefault()
     try {
-      let response = await axios.get('http://localhost:3001/') // assign route to users 
-      if (formState.username === response.data && formState.password === response.data.password) {
-        console.log('user exist:', response.data)
+      const response = await axios.get('http://localhost:3001/users')
+  
+    
+      const user = response.data.find(user => user.username === formState.username)
+  
+      if (user && user.password === formState.password) {
+        console.log('Login successful:', user)
         setLoggedIn(true)
+        setLogInMessage(`Welcome ${user.first_name}`)
+        setUser(user)
+
+
       } else {
-        setShowSignUp(true)
-        console.log('user doesnt exist')
+        console.log('Invalid username or password')
+        setLogInMessage('Invalid username or password')
       }
     } catch (error) {
-      console.error('Error getting users', error)
+      console.error('Error logging in:', error)
+     
     }
-    console.log('Log in clicked')
-  };
-
+  }
+  
   useEffect(() => {
     console.log(userType)
     console.log(formState)
@@ -58,72 +70,76 @@ export default function UserSignUpLogIn() {
     event.preventDefault()
 
     if (formState.password === confirmPassword && hasSpecialCharacter) {
-      try {
-        console.log('summited', formState)
-       // let response = await axios.post('http://localhost:3001/', formState)// assign route to users 
-            // console.log('Form submitted:', response.data)
-      } catch (error) {
-        console.error('Error submitting form:', error)
+        try {
+         
+          const formDataJson = {
+            first_name: formState.first_name,
+            last_name: formState.last_name,
+            username: formState.username,
+            email: formState.email,
+            password: formState.password,
+            owner: formState.owner,
+            host: formState.host,
+          }
+    
+        
+          const response = await axios.post('http://localhost:3001/users', formDataJson)
+          console.log('Form submitted:', response.data)
+          console.log("Passwords do not match or password doesn't contain special characters")
+          setClassName('valid')
+          setLogInMessage("You have been registered")
+        } catch (error) {
+          console.error('Error submitting form:', error)
+        }
+      } else {
+        console.log("Passwords do not match or password doesn't contain special characters")
+        setClassName('invalid')
+        setLogInMessage("Passwords do not match or password doesn't contain special characters")
       }
-    } else {
-      console.log("Passwords do not match or password doesn't contain special characters")
-    }
+    
   }
 
   return (
     <>
-      <button onClick={() => { setShowSignUp(false); setUserType('eventHost'); setFormState(formInitialState); }}>Log In</button>
 
-      <button onClick={() => { setShowSignUp(true); setFormState(formInitialState); }}>Sign Up</button>
-
+    <div className='toggle'>
+     <button className='LogInBtn' onClick={() => { setShowSignUp(false); setUserType('eventHost'); setFormState(formInitialState); }}>Log In</button>
+     </div>
       {showSignUp ? (
         <div className='BookContainer'>
           <form className="formContainer" onSubmit={handleSubmit}>
 
             <div className='selectdiv'>
               <div className='userHost'>
-                <label> Are you an event host ?<input id='owner' type='radio' name='host' value='true' onChange={handleChange} ></input>Yes</label><label> <input type='radio' name='host' value='false' onChange={handleChange} ></input>No</label>
+                <label> Are you an event host ?<input id='owner' type='radio' name='event_host' value='true' onChange={handleChange} ></input>Yes</label><label> <input type='radio' name='host' value='false' onChange={handleChange} ></input>No</label>
               </div>
               <div className='userHost'>
-                <label> Are you a venue host ?<input id='host' type='radio' name='host' value='true' onChange={handleChange}></input>Yes</label><label> <input type='radio' name='host' value='false' onChange={handleChange}></input>No</label>
+                <label> Are you a venue host ?<input id='host' type='radio' name='venue_host' value='true' onChange={handleChange}></input>Yes</label><label> <input type='radio' name='host' value='false' onChange={handleChange}></input>No</label>
               </div>
             </div>
 
             <div className='hostContainer'>
-              <label htmlFor='username'>Username:</label>
+           
               <input type='text' id='username' placeholder='username' value={formState.username} onChange={handleChange} required />
 
-              <label htmlFor='first_name'>Name:</label>
+            
               <input type='text' id='first_name' placeholder='First name' value={formState.first_name} onChange={handleChange} required />
-              <label htmlFor='last_name'>Name:</label>
+          
               <input type='text' id='last_name' placeholder='Last name' value={formState.last_name} onChange={handleChange} required />
 
-              <label htmlFor='e_mail'>E-mail:</label>
-              <input type='email' id='e_mail' placeholder='Email' value={formState.e_mail} onChange={handleChange} required />
+           
+              <input type='email' id='email' placeholder='Email' value={formState.email} onChange={handleChange} required />
 
-              <label htmlFor='phone_Number'>Phone Number:</label>
-              <input type='tel' id='phone_Number' placeholder='Phone number' value={formState.phone_Number} onChange={handleChange} required />
-
-              <label htmlFor='address_'>Address:</label>
-              <input type='text' id='address_' placeholder='Address' value={formState.address_} onChange={handleChange} required />
-
-              <label htmlFor='password'>Create a password:</label>
               <input type='password' id='password' placeholder='Password' minLength={7} value={formState.password} onChange={handleChange} required />
-              <label htmlFor="passwordConfirm">Confirm password</label>
+             
               <input type='password' placeholder='Confirm password' id='passwordConfirm' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
 
               <button type="submit" >Sign Up</button>
 
-              {formState.password === confirmPassword ? (
-                <p className="valid" >Passwords match </p>
-              ) : (
-                <p className="invalid">Passwords do not match</p>
-              )}
-
-              {!hasSpecialCharacter && (
-                <p className="invalid">Password must contain at least one special character</p>
-              )}
-
+             
+            
+                <p className={className}>{logInMessage}</p>
+             
             </div>
 
           </form>
@@ -132,13 +148,18 @@ export default function UserSignUpLogIn() {
         <div className='BookContainer'>
           <form className="formContainer" onSubmit={handleLogIn}>
             <div className='hostContainer'>
-              <label htmlFor='username'>Username:</label>
-              <input type='text' id='username' value={formState.username} onChange={handleChange} required />
-              <label htmlFor='password'>Password:</label>
-              <input type='password' id='password' value={formState.password} onChange={handleChange} required />
+              <input type='text' id='username' placeholder='username'value={formState.username} onChange={handleChange} required />
+             
+              <input type='password' id='password' placeholder=' password'value={formState.password} onChange={handleChange} required />
             </div>
             <button type="submit">Log In</button>
           </form>
+             {logInMessage && (
+             <p className="message"> {logInMessage} </p>
+            )}
+            <p>Don't Have and account yet ? </p>
+            <button className='SignUpBtn' onClick={() => { setShowSignUp(true); setFormState(formInitialState); }}>Sign Up Here</button>
+
         </div>
       )}
 

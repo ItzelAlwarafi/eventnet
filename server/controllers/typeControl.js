@@ -1,8 +1,8 @@
-const Type = require('../models')
+const {Type} = require('../models')
 
 const getAllTypes = async (req, res) => {
     try{
-        const types = await Type.find()
+        const types = await Type.find({})
         res.json(types)
     } catch (e) {
         return res.status(500).send(e.message)

@@ -2,7 +2,7 @@ const {User} = require('../models')
 
 const getAllUsers = async (req, res) => {
     try {
-        const users = await User.find({})
+        const users = await User.find({}).populate('venues_owned').populate('venues_liked')
         res.json(users)
     } catch (e) {
         return res.status(500).send(e.message)
@@ -12,7 +12,7 @@ const getAllUsers = async (req, res) => {
 const getUserById = async (req, res) => {
     try {
         const {id} = req.params
-        const user = await User.findById(id)
+        const user = await User.findById(id).populate('venues_owned').populate('venues_liked')
         if (user) {
             return res.json(user)
         } else {
@@ -26,7 +26,7 @@ const getUserById = async (req, res) => {
 const getUserByUsername = async (req, res) => {
     try {
         const {username} = req.params
-        const user = await User.find({username: username})
+        const user = await User.find({username: username}).populate('venues_owned').populate('venues_liked')
         if (user) {
             return res.json(user)
         } else {
