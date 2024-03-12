@@ -13,9 +13,11 @@ function App() {
   
   const[loggedIn,setLoggedIn] =  useState(false)
  
+const [user, setUser] = useState([])
+
   return (
     <div>
-       <userContext.Provider value={{userType,setUserType,loggedIn,setLoggedIn}}>
+       <userContext.Provider value={{userType,setUserType,loggedIn,setLoggedIn,user, setUser}}>
       <Header />
       <Main />
       </userContext.Provider>
