@@ -9,45 +9,105 @@ export default function Venue (props) {
     let {id} = useParams()
 
     useEffect(() => {
-        const getLocations = async() => {
-            const response = await axios.get('http://localhost:3001/locations')
-            setLocations(response.data)
-        }
-        const getTypes = async() => {
-            const response = await axios.get('http://localhost:3001/types')
-            setTypes(response.data)
-        }
         const getVenues = async() => {
             const response = await axios.get('http://localhost:3001/venues')
-            setVenues(response.data)
+            setVenue(response.data)
         }
-
-        getLocations()
-        getTypes()
         getVenues()
     }, [])
     
     return venue ? (
-        <div className="venue-list-page">
-            <div className="search-list-title">Venues</div>
-            <div className="search-list-grid">
-                {props.venues.map((venue) => (
-                    <div className="search-list-card">
-                        {/* <img src={venue.img} alt={venue.name} className="list-card-image"/> */}
-                        <div className="list-card-title">{venue.city}</div>
-                        <div className="list-card-subtitle">{venue.location}</div>
-                        <button className="list-card-button-dropdown-open"/>
-                        {/* figure out how to show/hide dropdown info onClick */}
-                        <div className="list-card-dropdown">
-                            <div className="list-card-dropdown-primary">{venue.type}</div>
-                            <div className="list-card-dropdown-secondary">{venue.owner}</div>
-                            <div className="list-card-dropdown-primary">{venue.price}</div>
-                            <button className="list-card-button-dropdown-close"/>
-                        </div>
-                        <button className="list-card-button-venue" onClick={() => showVenue(venue)} key={venue.id}>explore</button>
-                    </div>
-                ))}
+        <div className="venue-detail-page">
+            <img src={venue.img} alt={venue.name} className="list-card-image"/>
+            {/* make this a carousel of the image array */}
+            <div className="detail-header-container">
+                <div className="text-title-32">{venue.name}</div>
+                {/* Like and Share icons / buttons; add to container w header title */}
+                <div className="text-caps-16">{venue.location}</div>
+                <div className="text-standard-14">{venue.street_address}</div>
+                <div className="text-standard-12">Hosted by {venue.owner}</div>
+                <div className="detail-header-rentals">
+                    <div className="header-stars">Star Ranking here</div>
+                    <div className="text-standard-14" itemID="text-align-Right">### Reviews this Year</div>
+                </div>
             </div>
+            <div className="detail-body-container">
+                <div className="text-title-24-border">{venue.type}</div>
+                <div className="text-standard-14">Venue description goes here. Lorem ipsum dolor sit amet consectetur, adipisicing elit. <br>Distinctio perferendis asperiores explicabo corrupti! Atque est, consequatur doloremque aut maxime ipsa aliquid consequuntur asperiores molestiae aspernatur facere molestias suscipit, exercitationem rerum.</br></div>
+                <div className="detail-body-bubbles">
+                    <div className="text-bubble-black">Example</div>
+                    <div className="text-bubble-black">Example</div>
+                    <div className="text-bubble-black">Example</div>
+                </div>
+                <div className="detail-body-bubbles">
+                    <div className="text-bubble-white">Example</div>
+                    <div className="text-bubble-white">Example</div>
+                    <div className="text-bubble-white">Example</div>
+                </div>
+            </div>
+            <div className="detail-body-container">
+                <div className="text-title-20-border">The Space</div>
+                <div className="text-body-split">
+                    <div className="text-standard-14" itemID="text-align-Right">
+                        <div>Space:</div>
+                        <div>Capacity:</div>
+                        <div>Handicap Accessible:</div>
+                        <div>Amenities</div>
+                    </div>
+                    <div className="text-standard-14" itemID="text-align-Left">
+                        <div>{venue.type}</div>
+                        <div>###</div>
+                        <div>Y/N</div>
+                        <div>List</div>
+                    </div>
+                </div>
+            </div>
+            <div className="detail-body-container">
+                <div className="text-title-20-border">Special Features</div>
+                <div className="text-standard-14" itemID="flexgrid-list">
+                    <div>Example</div>
+                    <div>Example</div>
+                    <div>Example</div>
+                    <div>Example</div>
+                </div>
+            </div>
+            <div className="detail-body-container">
+                <div className="text-title-20-border">Rental Requirements</div>
+                <div className="text-body-split">
+                    <div className="text-standard-14" itemID="text-align-Right">
+                        <div>Minimum Rental Period:</div>
+                        <div>Average Cost:</div>
+                    </div>
+                    <div className="text-standard-14" itemID="text-align-Left">
+                        <div># hours</div>
+                        <div>{venue.price}</div>
+                    </div>
+                </div>
+                <div className="detail-venue-booking">Inquire</div>
+                {/* booking button / form link here */}
+                <div className="text-standard-14" itemID="flexgrid-list">
+                    <div className="icon-click-box">
+                        <div>icon</div>
+                        <div className="text-standard-14">Venue Rules</div>
+                        {/* onClick would expand or popup */}
+                    </div>
+                    <div className="icon-click-box">
+                        <div>icon</div>
+                        <div className="text-standard-14">Cancellation Policy</div>
+                    </div>
+                </div>
+            </div>
+            <div className="detail-body-container">
+                <div className="text-title-20-border">Similar Venues</div>
+                <div className="text-standard-14">Carousel here</div>
+                {/* import component for this? */}
+            </div>
+            <div className="detail-body-container">
+                <div className="text-title-20-border">Reviews</div>
+                <div className="text-standard-14">See Wireframe</div>
+                {/* import component for this? */}
+            </div>
+            <button className="detail-button-back">back to search</button>
         </div>
     ) : (
         <div className="loading">Loading...</div>

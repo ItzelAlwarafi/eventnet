@@ -3,25 +3,39 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 export default function Location (props) {
-    let navigate = useNavigate()
+    const [locations, setLocations] = useState([])
 
-    const showLocation = (location) => {
+    useEffect(() => {
+        const getLocations = async() => {
+            const response = await axios.get('http://localhost:3001/locations')
+            setLocations(response.data)
+        }
+        getLocations()
+    }, [])
+    console.log(locations)
+
+    const showType = (location) => {
         navigate(`${location.id}`)
     }
     
-    return (
-        <div className='location-list-page'>
-            <div className='search-list-title'>Locations</div>
-            <div className="search-list-grid">
-                {props.locations.map((location) => (
-                    <div className="search-list-card" onClick={() => showLocation(location)} key={location.id}>
-                        {/* <img src={location.img} alt={location.name} className="list-card-image"/> */}
-                        <div className="list-card-title">{location.city}</div>
-                        <div className="list-card-subtitle">{location.state} • {location.country}</div>
-                        <button className="list-card-button-location">explore</button>
-                    </div>
-                ))}
+    if (!locations) {
+        return <div className="loading">Loading...</div>
+    } else {
+        return (
+            <div className='location-list-page'>
+                <div className='search-list-title'>Locations</div>
+                <div className="search-list-grid">
+                    {locations.map((location) => (
+                        <div className="search-list-card" onClick={() => showType(location)} key={location.id}>
+                            {/* <img src={location.img} alt={location.city} className="list-card-image"/> */}
+                            <div className="text-title-20">{location.city}</div>
+                            <div className="text-caps-12">{location.state} • {location.country}</div>
+                            <button className="list-card-button-explore">explore</button>
+                            {/* onClick move to list of venues @ this location */}
+                        </div>
+                    ))}
+                </div>
             </div>
-        </div>
-    )
+        ) 
+    }
 }
