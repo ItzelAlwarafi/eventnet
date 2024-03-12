@@ -13,22 +13,18 @@ const Header = () => {
     const { loggedIn } = useContext(userContext)
     const [navBar, openNavBar] = useState(false)
     const [userBar, openUserBar] = useState(false)
-    const { user } = useContext(userContext)
 
     const toggleNavBar = () => openNavBar(!navBar)
     const toggleUser = () => openUserBar(!userBar)
-    const userDetails = () => {
-        console.log(user)
-    }
 
     return (
         <div className='header'> 
             <h1> Venyou </h1>
             <FontAwesomeIcon icon={faBars} onClick={toggleNavBar}/>
-            { navBar ? <Sidebar /> : null }
+            { navBar ? <Sidebar toggleNavBar={toggleNavBar} /> : null }
             <SearchBar />
             { loggedIn ? <FontAwesomeIcon icon={faUser} onClick={toggleUser} /> : <LogIn /> }
-            { userBar ? <UserSidebar /> : null }
+            { userBar ? <UserSidebar toggleUser={toggleUser} /> : null }
         </div>
     )
 }
