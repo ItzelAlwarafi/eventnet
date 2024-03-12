@@ -1,4 +1,4 @@
-const {Venue, Location, Type} = require('../models')
+const {Venue, Location, Type, User} = require('../models')
 
 const universalSearch = async(req, res) => {
     try {
@@ -39,8 +39,10 @@ const getVenueById = async(req,res) => {
 
 const createVenue = async(req, res) => {
     try {
-        const venue = await new Venue (req.body)
+        const { owner } = req.body
+        const venue = new Venue (req.body)
         await venue.save()
+        const user = await User.findByIdAndUpdate(owner, {$push: {venues_owned: venue.id}})
         return res.status(201).json({venue})
     }
     catch (e){
