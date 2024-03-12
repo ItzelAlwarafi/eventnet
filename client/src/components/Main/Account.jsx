@@ -64,6 +64,8 @@ export default function Account () {
         const filteredData = Object.fromEntries(Object.entries(editForm).filter(([_, value]) => value !== ''))
         if (passwordMatch && specialCharacters) {
             const update = axios.patch(`http://localhost:3001/users/${user[0]._id}`, filteredData)
+            setPasswordMatch()
+            setSpecialCharacters()
         }
     }
 
