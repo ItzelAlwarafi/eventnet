@@ -22,7 +22,7 @@ export default function SearchBar () {
     <div className='dropdown'>
       <input
         type="text"
-        placeholder="Search Event"
+        placeholder="Search venue"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         onKeyDown={handleKeydown} 
