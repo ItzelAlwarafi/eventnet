@@ -23,8 +23,9 @@ export default function UserSignUpLogIn() {
   const [showSignUp, setShowSignUp] = useState(false)
   const [confirmPassword, setConfirmPassword] = useState('')
   const [logInMessage,setLogInMessage] =useState('')
-const[className,setClassName] = useState('')
-
+  const [userNameMessage, setUserNameMessage] = useState('')
+  const [passwordMessage,setPasswordMessage] = useState('')
+ 
   const hasSpecialCharacter = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(formState.password)
 
   const handleChange = (event) => {
@@ -34,7 +35,44 @@ const[className,setClassName] = useState('')
     }
     setFormState({ ...formState, [id]: value })
   }
-  
+   
+  const getUserName = async (event) => {
+    event.preventDefault()
+    try {
+        const response = await axios.get('http://localhost:3001/users')
+        
+            const user = response.data.find(user => user.username === formState.username)
+            console.log(user)
+            if (user) { 
+                setUserNameMessage( <p className ='invalid' style={{ color: 'red' }}>Please choose another username ! </p>)
+            } else {
+             console.log('username available')
+             setUserNameMessage(<p className='valid' style={{ color: 'green' }}> username </p>)
+            }
+    } catch (error) {
+        console.error('Error:', error)
+    }
+}
+
+const handlePassword = () => {
+  if (hasSpecialCharacter) {
+  console.log('password has special character')
+  setPasswordMessage(<p className='valid' style={{ color: 'green' }}> special character </p>)
+ 
+  } else {
+    setPasswordMessage( <p className='invalid' style={{ color: 'red' }}> add special character ! </p>) 
+  }
+ 
+}
+
+const matchPasswords = ()=> {
+
+  if ( formState.password === confirmPassword ){
+   setLogInMessage(<p className='valid' style={{ color: 'green' }}> passwords match </p>)
+  }else{
+    setLogInMessage(<p className ='invalid 'style={{ color: 'red' }}> password must match ! </p>)
+  }
+}
 
   const handleLogIn = async (event) => {
     event.preventDefault()
@@ -47,13 +85,13 @@ const[className,setClassName] = useState('')
       if (user && user.password === formState.password) {
         console.log('Login successful:', user)
         setLoggedIn(true)
-        setLogInMessage(`Welcome ${user.first_name}`)
+        setLogInMessage(<p className='valid' style={{ color: 'green' }}>  Welcome {user.first_name} </p>)
         setUser(user)
 
 
       } else {
         console.log('Invalid username or password')
-        setLogInMessage('Invalid username or password')
+        setLogInMessage(<p className='invalid' style={{ color: 'red' }}> Invalid username or password</p>)
       }
     } catch (error) {
       console.error('Error logging in:', error)
@@ -68,10 +106,9 @@ const[className,setClassName] = useState('')
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-
-    if (formState.password === confirmPassword && hasSpecialCharacter) {
+  
+  
         try {
-         
           const formDataJson = {
             first_name: formState.first_name,
             last_name: formState.last_name,
@@ -81,23 +118,19 @@ const[className,setClassName] = useState('')
             owner: formState.owner,
             host: formState.host,
           }
-    
-        
+  
           const response = await axios.post('http://localhost:3001/users', formDataJson)
           console.log('Form submitted:', response.data)
-          console.log("Passwords do not match or password doesn't contain special characters")
-          setClassName('valid')
-          setLogInMessage("You have been registered")
+          setLogInMessage(<p className='valid' style={{ color: 'green' }}> you have been registered</p>)
+
         } catch (error) {
           console.error('Error submitting form:', error)
         }
-      } else {
-        console.log("Passwords do not match or password doesn't contain special characters")
-        setClassName('invalid')
-        setLogInMessage("Passwords do not match or password doesn't contain special characters")
-      }
-    
+      
+   
   }
+
+
 
   return (
     <>
@@ -111,16 +144,17 @@ const[className,setClassName] = useState('')
 
             <div className='selectdiv'>
               <div className='userHost'>
-                <label> Are you an event host ?<input id='owner' type='radio' name='event_host' value='true' onChange={handleChange} ></input>Yes</label><label> <input type='radio' name='host' value='false' onChange={handleChange} ></input>No</label>
+                <label> Are you an event host ?<input id='owner' type='radio' name='event_host' value='true' onChange={handleChange} required ></input>Yes</label><label> <input type='radio' name='event_host' value='false' onChange={handleChange} required ></input>No</label>
               </div>
               <div className='userHost'>
-                <label> Are you a venue host ?<input id='host' type='radio' name='venue_host' value='true' onChange={handleChange}></input>Yes</label><label> <input type='radio' name='host' value='false' onChange={handleChange}></input>No</label>
+                <label> Are you a venue host ?<input id='host' type='radio' name='venue_host' value='true' onChange={handleChange}required ></input>Yes</label><label> <input type='radio' name='venue_host' value='false' onChange={handleChange}required ></input>No</label>
               </div>
             </div>
 
             <div className='hostContainer'>
            
-              <input type='text' id='username' placeholder='username' value={formState.username} onChange={handleChange} required />
+            
+              <input type='text' id='username' placeholder='username' value={formState.username} onChange={handleChange} onBlur={getUserName} required />
 
             
               <input type='text' id='first_name' placeholder='First name' value={formState.first_name} onChange={handleChange} required />
@@ -130,16 +164,19 @@ const[className,setClassName] = useState('')
            
               <input type='email' id='email' placeholder='Email' value={formState.email} onChange={handleChange} required />
 
-              <input type='password' id='password' placeholder='Password' minLength={7} value={formState.password} onChange={handleChange} required />
+              <input type='password' id='password' placeholder='Password' minLength={7} value={formState.password} onChange={handleChange} onBlur={handlePassword} required />
              
-              <input type='password' placeholder='Confirm password' id='passwordConfirm' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
+              <input type='password' placeholder='Confirm password' id='passwordConfirm' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} onBlur={matchPasswords} required />
 
               <button type="submit" >Sign Up</button>
 
-             
-            
-                <p className={className}>{logInMessage}</p>
-             
+             <div className='messeges'>
+              {userNameMessage}
+             {logInMessage}
+             {passwordMessage}
+              </div>
+
+
             </div>
 
           </form>
@@ -150,15 +187,14 @@ const[className,setClassName] = useState('')
             <div className='hostContainer'>
               <input type='text' id='username' placeholder='username'value={formState.username} onChange={handleChange} required />
              
-              <input type='password' id='password' placeholder=' password'value={formState.password} onChange={handleChange} required />
+              <input type='password' id='password' placeholder=' password'value={formState.password} onChange={handleChange}  required />
             </div>
             <button type="submit">Log In</button>
           </form>
-             {logInMessage && (
-             <p className="message"> {logInMessage} </p>
-            )}
+           {logInMessage}
+           
             <p>Don't Have and account yet ? </p>
-            <button className='SignUpBtn' onClick={() => { setShowSignUp(true); setFormState(formInitialState); }}>Sign Up Here</button>
+            <button className='SignUpBtn' onClick={() => { setShowSignUp(true); setFormState(formInitialState);setLogInMessage('') }}>Sign Up Here</button>
 
         </div>
       )}
