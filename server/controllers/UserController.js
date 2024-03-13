@@ -41,7 +41,7 @@ const createUser = async (req, res) => {
     try {
         const user = new User(req.body)
         await user.save()
-        return res.status(201).json({venue})
+        return res.status(201).json({user})
     } catch (e) {
         return res.status(500).send(e.message)
     }

@@ -9,6 +9,7 @@ export default function SearchBar () {
 
   const handleSearch = async() => {
     const response = await axios.get(`http://localhost:3001/search/${searchTerm}`)
+    console.log(response)
     setResults(response.data)
   }
 
