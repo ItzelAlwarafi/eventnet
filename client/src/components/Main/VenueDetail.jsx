@@ -1,7 +1,7 @@
 import {useNavigate, useParams} from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-
+import VenueCarousel from '../Main/VenueCarousel'
 export default function Venue (props) {
     // let navigate = useNavigate()
 
@@ -19,7 +19,8 @@ export default function Venue (props) {
     if (venue) {
     return (
         <div className="venue-detail-page">
-            <img src={venue.img[0]} alt={venue.name} className="list-card-image"/>
+            <VenueCarousel/>
+            {/* <img src={venue.img[0]} alt={venue.name} className="list-card-image"/> */}
             {/* make this a carousel of the image array */}
             <div className="detail-header-container">
                 <div className="text-title-32">{venue.name}</div>
