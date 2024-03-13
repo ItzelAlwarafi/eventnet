@@ -8,6 +8,7 @@ import UserSignUpLogIn from './UserSignUpLogIn'
 import Favourited from './Favourited'
 import Owned from './Owned'
 import Account from './Account'
+import Location from './Location'
 
 export default function Main () {
     return (
