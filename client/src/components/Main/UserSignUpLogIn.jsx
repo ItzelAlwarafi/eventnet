@@ -30,14 +30,10 @@ export default function UserSignUpLogIn() {
 
   const handleChange = (event) => {
     const { id, value } = event.target
-    // if (event.target.type === 'radio') {
-    //   setUserType(value)
-    // }
     setFormState({ ...formState, [id]: value })
   }
 
   const handleHost = (event) => {
-    // console.log(event.target.name)
     setFormState({...formState, [event.target.name]: event.target.value})
   }
    
@@ -47,11 +43,9 @@ export default function UserSignUpLogIn() {
         const response = await axios.get('http://localhost:3001/users')
         
             const user = response.data.find(user => user.username === formState.username)
-            // console.log(user)
             if (user) { 
                 setUserNameMessage( <p className ='invalid' style={{ color: 'red' }}>Please choose another username ! </p>)
             } else {
-            //  console.log('username available')
              setUserNameMessage(<p className='valid' style={{ color: 'green' }}> username </p>)
             }
     } catch (error) {
@@ -61,7 +55,7 @@ export default function UserSignUpLogIn() {
 
 const handlePassword = () => {
   if (hasSpecialCharacter) {
-  // console.log('password has special character')
+  console.log('password has special character')
   setPasswordMessage(<p className='valid' style={{ color: 'green' }}> special character </p>)
  
   } else {
@@ -95,7 +89,7 @@ const matchPasswords = ()=> {
 
 
       } else {
-        // console.log('Invalid username or password')
+        console.log('Invalid username or password')
         setLogInMessage(<p className='invalid' style={{ color: 'red' }}> Invalid username or password</p>)
       }
     } catch (error) {
@@ -103,11 +97,7 @@ const matchPasswords = ()=> {
      
     }
   }
-  
-  // useEffect(() => {
-  //   console.log(userType)
-  //   console.log(formState)
-  // }, [userType, formState])
+
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -125,7 +115,7 @@ const matchPasswords = ()=> {
           }
   
           const response = await axios.post('http://localhost:3001/users', formDataJson)
-          // console.log('Form submitted:', response.data)
+          console.log('Form submitted:', response.data)
           setLogInMessage(<p className='valid' style={{ color: 'green' }}> you have been registered</p>)
 
         } catch (error) {
