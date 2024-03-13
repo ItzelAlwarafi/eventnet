@@ -14,6 +14,8 @@ export default function Location (props) {
     }, [])
     console.log(locations)
 
+    const navigate = useNavigate()
+
     const showType = (location) => {
         navigate(`${location.id}`)
     }
