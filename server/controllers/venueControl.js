@@ -7,8 +7,34 @@ const universalSearch = async(req, res) => {
         const location = await Location.find({$or: [{city: {$regex: regex}}, {state: {$regex: regex}}, {country: {$regex: regex}}]})
         const type = await Type.find({$or: [{environment: {$regex: regex}}, {type: {$regex: regex}}]})
 
-        const venues = await Venue.find({$or: [{name: {$regex: regex}}, {owner: {$regex: regex}}, {location: location[0]._id}, {type: type[0]._id} ]}).populate('owner')
-        res.json(venues)
+        const venues = await Venue.find({name: {$regex: regex}}).populate({path: 'owner'})
+
+        let searchLocation = []
+        let searchType = []
+
+        if (location.length > 0) {
+            searchLocation = await Venue.find({location: location[0]._id}).populate('owner')
+        }
+
+        if (type.length > 0) {
+            searchType = await Venue.find({type: type[0]._id}).populate('owner')
+        }
+
+        let combinedArray = []
+
+        if (venues.length > 0 ) {
+            combinedArray = combinedArray.concat(venues)
+        }
+
+        if (searchLocation.length > 0) {
+            combinedArray = combinedArray.concat(searchLocation)
+        }
+
+        if (searchType.length >0 ) {
+            combinedArray = combinedArray.concat(searchType)
+        }
+
+        res.json(combinedArray )
         
     } catch (e) {
         return res.status(500).send(e.message)
