@@ -1,24 +1,25 @@
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 export default function Venue (props) {
-    let navigate = useNavigate()
+    // let navigate = useNavigate()
 
-    const [venue, setVenue] = useState('')
+    const [venue, setVenue] = useState({})
     let {id} = useParams()
 
     useEffect(() => {
         const getVenues = async() => {
-            const response = await axios.get('http://localhost:3001/venues')
+            const response = await axios.get(`http://localhost:3001/venues/${id}`)
             setVenue(response.data)
         }
         getVenues()
     }, [])
-    
-    return venue ? (
+
+    if (venue) {
+    return (
         <div className="venue-detail-page">
-            <img src={venue.img} alt={venue.name} className="list-card-image"/>
+            <img src={venue.img[0]} alt={venue.name} className="list-card-image"/>
             {/* make this a carousel of the image array */}
             <div className="detail-header-container">
                 <div className="text-title-32">{venue.name}</div>
@@ -33,7 +34,7 @@ export default function Venue (props) {
             </div>
             <div className="detail-body-container">
                 <div className="text-title-24-border">{venue.type}</div>
-                <div className="text-standard-14">Venue description goes here. Lorem ipsum dolor sit amet consectetur, adipisicing elit. <br>Distinctio perferendis asperiores explicabo corrupti! Atque est, consequatur doloremque aut maxime ipsa aliquid consequuntur asperiores molestiae aspernatur facere molestias suscipit, exercitationem rerum.</br></div>
+                <div className="text-standard-14">Venue description goes here. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio perferendis asperiores explicabo corrupti! Atque est, consequatur doloremque aut maxime ipsa aliquid consequuntur asperiores molestiae aspernatur facere molestias suscipit, exercitationem rerum.</div>
                 <div className="detail-body-bubbles">
                     <div className="text-bubble-black">Example</div>
                     <div className="text-bubble-black">Example</div>
@@ -109,7 +110,7 @@ export default function Venue (props) {
             </div>
             <button className="detail-button-back">back to search</button>
         </div>
-    ) : (
+    ) } else { return (
         <div className="loading">Loading...</div>
-    )
+    )}
 }

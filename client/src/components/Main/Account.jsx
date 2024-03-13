@@ -29,8 +29,8 @@ export default function Account () {
     }
 
     const validatePw = () => {
-        const hasSpecialCharacter = () => {/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(editForm.password)}
-        if (hasSpecialCharacter()) {
+        const hasSpecialCharacter = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(editForm.password)
+        if (hasSpecialCharacter === true) {
             setSpecialCharacters(true)
         } else {
             setSpecialCharacters(false)
@@ -62,10 +62,13 @@ export default function Account () {
             validatePw()
         }
         const filteredData = Object.fromEntries(Object.entries(editForm).filter(([_, value]) => value !== ''))
+        console.log(specialCharacters)
         if (passwordMatch && specialCharacters) {
             const update = axios.patch(`http://localhost:3001/users/${user[0]._id}`, filteredData)
-            setPasswordMatch()
-            setSpecialCharacters()
+            setPasswordMatch('')
+            setSpecialCharacters('')
+            toggleEditMode(false)
+            console.log(filteredData)
         }
     }
 

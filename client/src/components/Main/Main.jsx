@@ -1,13 +1,14 @@
 import { Routes, Route } from 'react-router-dom'
 import Home from './Home'
 import SpaceType from './SpaceType'
-import Venue from './Venue'
+import Venue from './VenueDetail'
 import BookingForm from './BookingForm'
 import AddVenue from './AddVenue'
 import UserSignUpLogIn from './UserSignUpLogIn'
 import Favourited from './Favourited'
 import Owned from './Owned'
 import Account from './Account'
+import Location from './Location'
 
 export default function Main () {
     return (

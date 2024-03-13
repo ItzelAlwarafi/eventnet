@@ -30,10 +30,11 @@ export default function UserSignUpLogIn() {
 
   const handleChange = (event) => {
     const { id, value } = event.target
-    if (id === 'user_type') {
-      setUserType(value)
-    }
     setFormState({ ...formState, [id]: value })
+  }
+
+  const handleHost = (event) => {
+    setFormState({...formState, [event.target.name]: event.target.value})
   }
    
   const getUserName = async (event) => {
@@ -42,11 +43,9 @@ export default function UserSignUpLogIn() {
         const response = await axios.get('http://localhost:3001/users')
         
             const user = response.data.find(user => user.username === formState.username)
-            console.log(user)
             if (user) { 
                 setUserNameMessage( <p className ='invalid' style={{ color: 'red' }}>Please choose another username ! </p>)
             } else {
-             console.log('username available')
              setUserNameMessage(<p className='valid' style={{ color: 'green' }}> username </p>)
             }
     } catch (error) {
@@ -83,7 +82,7 @@ const matchPasswords = ()=> {
       const user = response.data.find(user => user.username === formState.username)
   
       if (user && user.password === formState.password) {
-        console.log('Login successful:', user)
+        // console.log('Login successful:', user)
         setLoggedIn(true)
         setLogInMessage(<p className='valid' style={{ color: 'green' }}>  Welcome {user.first_name} </p>)
         setUser(user)
@@ -98,11 +97,7 @@ const matchPasswords = ()=> {
      
     }
   }
-  
-  useEffect(() => {
-    console.log(userType)
-    console.log(formState)
-  }, [userType, formState])
+
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -144,10 +139,10 @@ const matchPasswords = ()=> {
 
             <div className='selectdiv'>
               <div className='userHost'>
-                <label> Are you an event host ?<input id='owner' type='radio' name='event_host' value='true' onChange={handleChange} required ></input>Yes</label><label> <input type='radio' name='event_host' value='false' onChange={handleChange} required ></input>No</label>
+                <label> Are you an event host ?<input id='owner' type='radio' name='host' value='true' onChange={handleHost} required ></input>Yes</label><label> <input type='radio' name='host' value='false' onChange={handleHost} required ></input>No</label>
               </div>
               <div className='userHost'>
-                <label> Are you a venue host ?<input id='host' type='radio' name='venue_host' value='true' onChange={handleChange}required ></input>Yes</label><label> <input type='radio' name='venue_host' value='false' onChange={handleChange}required ></input>No</label>
+                <label> Are you a venue host ?<input id='host' type='radio' name='owner' value='true' onChange={handleHost}required ></input>Yes</label><label> <input type='radio' name='owner' value='false' onChange={handleHost}required ></input>No</label>
               </div>
             </div>
 
