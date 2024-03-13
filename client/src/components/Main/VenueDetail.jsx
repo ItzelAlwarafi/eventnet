@@ -5,7 +5,7 @@ import axios from 'axios'
 export default function Venue (props) {
     // let navigate = useNavigate()
 
-    const [venue, setVenue] = useState({})
+    const [venue, setVenue] = useState()
     let {id} = useParams()
 
     useEffect(() => {
