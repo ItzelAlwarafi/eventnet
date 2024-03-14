@@ -74,7 +74,7 @@ export default function Account () {
 
     return (
         <div>
-            <h1>{user[0].first_name}'s Account</h1>
+            <h1>{user[0].first_name ? user[0].first_name : user[0].last_name}'s Account</h1>
             <button type='button' onClick={handleEdit} >Edit</button>
             { editMode ? <button type='button' onClick={cancelEdit} >Cancel</button> : null}
 
@@ -82,9 +82,9 @@ export default function Account () {
                 <dt>Name</dt>
                 { editMode ? 
                 <div>
-                    <input type='text' id='first_name' value={editForm.first_name} onChange={handleChange} placeholder={user[0].first_name} /> <input type='text' id='last_name' value={editForm.last_name} placeholder={user[0].last_name} onChange={handleChange} />
+                    <input type='text' id='first_name' value={editForm.first_name} onChange={handleChange} placeholder={user[0].first_name || ''} /> <input type='text' id='last_name' value={editForm.last_name} placeholder={user[0].last_name} onChange={handleChange} />
                 </div> :
-                <dd>{user[0].first_name} {user[0].last_name}</dd>
+                <dd>{user[0].first_name ? user[0].first_name : null} {user[0].last_name}</dd>
                  }
 
                 <dt>Username</dt>

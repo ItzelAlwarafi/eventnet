@@ -17,7 +17,7 @@ export default function SpaceType (props) {
     console.log(types)
 
     const showType = (type) => {
-        navigate(`${type.id}`)
+        navigate(`${type._id}`)
     }
     
     if (!types) {
@@ -28,7 +28,7 @@ export default function SpaceType (props) {
                 <div className="text-title-32">Space Types</div>
                 <div className="search-list-grid">
                     {types.map((type) => (
-                        <div className="search-list-card" onClick={() => showType(type)} key={type.id}>
+                        <div className="search-list-card" onClick={() => showType(type)} key={type._id}>
                             {/* <img src={type.img} alt={type.name} className="list-card-image"/> */}
                             <div className="text-title-20">{type.type}</div>
                             <div className="text-standard-16">{type.environment}</div>

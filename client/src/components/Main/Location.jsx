@@ -2,7 +2,7 @@ import {useNavigate} from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-export default function Location (props) {
+export default function Location () {
     const [locations, setLocations] = useState([])
 
     useEffect(() => {
@@ -12,12 +12,11 @@ export default function Location (props) {
         }
         getLocations()
     }, [])
-    console.log(locations)
 
     const navigate = useNavigate()
 
     const showType = (location) => {
-        navigate(`${location.id}`)
+        navigate(`${location._id}`)
     }
     
     if (!locations) {
@@ -28,7 +27,7 @@ export default function Location (props) {
                 <div className='search-list-title'>Locations</div>
                 <div className="search-list-grid">
                     {locations.map((location) => (
-                        <div className="search-list-card" onClick={() => showType(location)} key={location.id}>
+                        <div className="search-list-card" onClick={() => showType(location)} key={location._id}>
                             {/* <img src={location.img} alt={location.city} className="list-card-image"/> */}
                             <div className="text-title-20">{location.city}</div>
                             <div className="text-caps-12">{location.state} • {location.country}</div>
