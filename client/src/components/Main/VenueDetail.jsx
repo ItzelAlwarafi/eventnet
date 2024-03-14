@@ -2,9 +2,10 @@ import {useNavigate, useParams} from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faShareFromSquare} from '@fortawesome/pro-duotone-svg-icons'
-import {faCircleHeart as Liked } from '@fortawesome/pro-regular-svg-icons'
-import {faCircleHeart as Unliked, faStarSharp } from '@fortawesome/pro-solid-svg-icons'
+import {faShareFromSquare, faSpeakers, faFireplace} from '@fortawesome/pro-duotone-svg-icons'
+import {faCircleHeart as Liked, faRecordVinyl } from '@fortawesome/pro-regular-svg-icons'
+import {faCircleHeart as Unliked, faStarSharp, faMicrophoneStand } from '@fortawesome/pro-solid-svg-icons'
+import { faWifi, faBan, faAnglesDown, faAnglesUp, faCalendarXmark } from '@fortawesome/free-solid-svg-icons'
 import userContext from '../../userContext'
 import VenueCarousel from '../Main/VenueCarousel'
 
@@ -14,8 +15,10 @@ export default function Venue (props) {
     let {id} = useParams()
     const [liked, setLiked] = useState(false)
     const navigate = useNavigate()
-     const {user, setUser} = useContext(userContext)
+    const {user, setUser} = useContext(userContext)
     const {loggedIn} = useContext(userContext)
+    const [similar, setSimilar] = useState([])
+    const [rules, toggleRules] = useState(false)
 
     useEffect(() => {
         const getVenues = async() => {
@@ -24,7 +27,14 @@ export default function Venue (props) {
         }
         getVenues()
     }, [])
-    console.log(venue)
+
+    useEffect(() => {
+        const getSimilar = async() => {
+            const response = await axios.get(`http://localhost:3001/venues/location/${venue.location._id}`)
+            setSimilar(response.data)
+        }
+        getSimilar()
+    }, [venue])
 
     useEffect(() => {
         if (loggedIn && user[0].venues_liked.includes(id)) {
@@ -54,11 +64,13 @@ export default function Venue (props) {
         navigate('booking')
     }
 
+    const showRules = () => toggleRules(!rules)
+
     if (venue) {
     return (
         <div className="venue-detail-page">
             <VenueCarousel/>
-            {/* <img src={venue.img[0]} alt={venue.name} className="list-card-image"/> */}
+            <img src={venue.img[0]} alt={venue.name} className="list-card-image"/>
             {/* make this a carousel of the image array */}
             <div className="detail-header-container">
                 <div className="text-title-32">{venue.name}</div>
@@ -93,25 +105,28 @@ export default function Venue (props) {
                 <div className="text-body-split">
                     <div className="text-standard-14" itemID="text-align-Right">
                         <div>Space:</div>
-                        <div>Capacity: {venue.max_ppl} people</div>
+                        <div>Capacity:</div>
                         <div>Handicap Accessible:</div>
                         <div>Amenities</div>
                     </div>
                     <div className="text-standard-14" itemID="text-align-Left">
-                        {/* <div>{venue.type}</div> */}
-                        <div>###</div>
+                        {venue.type.map(type => 
+                            <div>
+                                {type.environment} {type.type}
+                            </div>)}
+                        <div>{venue.max_ppl} people</div>
                         <div>Y/N</div>
-                        <div>List</div>
+                        <div><FontAwesomeIcon icon={faWifi} /></div>
                     </div>
                 </div>
             </div>
             <div className="detail-body-container">
                 <div className="text-title-20-border">Special Features</div>
                 <div className="text-standard-14" itemID="flexgrid-list">
-                    <div>Example</div>
-                    <div>Example</div>
-                    <div>Example</div>
-                    <div>Example</div>
+                    <div><FontAwesomeIcon icon={faSpeakers} /></div>
+                    <div><FontAwesomeIcon icon={faRecordVinyl} /></div>
+                    <div><FontAwesomeIcon icon={faMicrophoneStand} /></div>
+                    <div><FontAwesomeIcon icon={faFireplace} /></div>
                 </div>
             </div>
             <div className="detail-body-container">
@@ -122,25 +137,37 @@ export default function Venue (props) {
                         <div>Average Cost:</div>
                     </div>
                     <div className="text-standard-14" itemID="text-align-Left">
-                        <div># hours</div>
-                        <div>{venue.price} / hour</div>
+                        <div>3 hours</div>
+                        <div>${venue.price} / hour</div>
                     </div>
                 </div>
                 <div className="detail-venue-booking" onClick={showBooking} >Book venue</div>
                 <div className="text-standard-14" itemID="flexgrid-list">
                     <div className="icon-click-box">
-                        <div>icon</div>
-                        <div className="text-standard-14">Venue Rules</div>
-                        {/* onClick would expand or popup */}
+                        <div onClick={showRules}>{ rules ? <FontAwesomeIcon icon={faAnglesUp} /> : <FontAwesomeIcon icon={faAnglesDown} /> }</div>
+                        <div className="text-standard-14" onClick={showRules}>Venue Rules</div>
+                        { rules ? 
+                        <div>
+                            <FontAwesomeIcon icon={faBan} /> Drug use
+                            <FontAwesomeIcon icon={faBan} /> Smoking
+                        </div> : null}
                     </div>
                     <div className="icon-click-box">
-                        <div>icon</div>
+                        <div><FontAwesomeIcon icon={faCalendarXmark} /></div>
                         <div className="text-standard-14">Cancellation Policy</div>
+                        <div>Cancellations may be made up to 48 hours before the start of the booking. Any cancellations made between 48 and 24 hours before the start of the booking will be charged 50% of the booking fee and any cancellation made under 24 hours' notice will be charged the full booking fee.</div>
                     </div>
                 </div>
             </div>
             <div className="detail-body-container">
                 <div className="text-title-20-border">Similar Venues</div>
+                { similar.length > 0 ? similar.map((result, index) => 
+                <div key={index}>
+                    <img src={result.img[0]} />
+                    <div>{result.name}</div>
+                    <div>{result.location.city}, {result.location.state}, {result.location.country}</div>
+                    <div>{result.type.environment} {result.type.type}</div>
+                </div>) : 'There are no similar venues.'}
                 <div className="text-standard-14">Carousel here</div>
                 {/* import component for this? */}
             </div>
