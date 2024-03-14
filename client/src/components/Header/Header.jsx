@@ -23,13 +23,15 @@ const Header = () => {
                 <FontAwesomeIcon icon={faBars} inverse className="side-menu-button" onClick={toggleNavBar}/>
                 { navBar ? <Sidebar toggleNavBar={toggleNavBar} /> : null }
                 <div className="app-title"> Venyou </div>
+                <FontAwesomeIcon icon={faUser} className="user-icon" onClick={toggleUser} />
+            </div>
+            <div className="header-login">
+                { loggedIn && userBar ? <UserSidebar toggleUser={toggleUser} />  : null}
+                { !loggedIn && userBar ? <LogIn /> : null }
             </div>
             <div className="header-search">
                 <SearchBar />
-            </div>
-            <FontAwesomeIcon icon={faUser} onClick={toggleUser} />
-                { loggedIn && userBar ? <UserSidebar toggleUser={toggleUser} />  : null}
-                { !loggedIn && userBar ? <LogIn /> : null }
+            </div>                
         </div>
     )
 }
