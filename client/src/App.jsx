@@ -3,6 +3,7 @@ import './App.css'
 import Header from './components/Header/Header'
 import Main from './components/Main/Main'
 import userContext from './userContext'
+import Footer from './components/Footer'
 
 
 function App() {
@@ -21,6 +22,7 @@ const [user, setUser] = useState([])
        <userContext.Provider value={{userType,setUserType,loggedIn,setLoggedIn,user, setUser}}>
       <Header />
       <Main />
+      <Footer />
       </userContext.Provider>
     </div>
   )

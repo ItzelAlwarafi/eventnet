@@ -29,7 +29,7 @@ export default function Venue (props) {
                 <div className="search-list-grid">
                     {venues.map((venue, id) => (
                         <div className="search-list-card">
-                            {/* <img src={venue.img} alt={venue.name} className="list-card-image"/> */}
+                            <img src={venue.img} alt={venue.name} className="list-card-image"/>
                             <div className="text-title-20">{venue.city}</div>
                             <div className="text-caps-12">{venue.location}</div>
                             <button className="list-card-button-dropdown-open"/>
@@ -40,7 +40,7 @@ export default function Venue (props) {
                                 <div className="text-standard-14">{venue.price}</div>
                                 <button className="list-card-button-dropdown-close"/>
                             </div>
-                            <button className="list-card-button-explore-venue" onClick={() => showVenue(venue.id)} key={id}>explore</button>
+                            <Link className="list-card-button-explore-venue" Link to={`/venues/${venue._id}`} key={id}>explore</Link>
                         </div>
                     ))}
                 </div>
