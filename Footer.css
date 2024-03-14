@@ -1,0 +1,45 @@
+.footer {
+    background-color: #2C3E50; /* Dark blue shade */
+    color: #ECF0F1; /* Light grey color for text */
+    font-family: 'Arial', sans-serif;
+    padding: 20px 10px;
+    text-align: center;
+  }
+  
+  .footer div {
+    margin-bottom: 15px;
+  }
+  
+  .footer ul {
+    list-style-type: none; /* This removes bullets from list */
+    padding: 0;
+    margin: 0 auto; 
+    display: flex;
+    justify-content: center; 
+    flex-wrap: wrap; 
+  }
+  
+  .footer ul li {
+    margin: 0 10px; 
+  }
+  
+  .footer a {
+    color: #ECF0F1; /* Light grey color */
+    text-decoration: none; /* Remove underline from links */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+  }
+  
+  .footer a:hover, .footer a:focus {
+    color: #F39C12; /* Orange color */
+    text-decoration: underline; 
+  }
+  
+  @media (max-width: 768px) {
+    .footer ul {
+      flex-direction: column; /* Stack links vertically on small screens */
+    }
+    .footer ul li {
+      margin: 5px 0; 
+    }
+  }
+  
