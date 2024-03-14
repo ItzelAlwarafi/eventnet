@@ -436,13 +436,13 @@ form ~ .valid {
   flex-direction: row;
 }
 
-#text-align-Right {
+.text-align-Right {
   text-align: right;
 }
-#text-align-Left {
+.text-align-Left {
   text-align: left;
 }
-#flexgrid-list {
+.flexgrid-list {
   display: flex;
   column-count: 2;
   column-gap: 10px;
@@ -457,6 +457,12 @@ form ~ .valid {
   font-family: "Roboto";
   color: white;
   background-color: black;
+  width: 100px;
+  border-radius: 20px;
+  text-align: center;
+  padding: 10px 0px;
+
+  align-self: center;
 }
 .list-card-button-explore-venue {
   font-family: "Roboto";
@@ -503,7 +509,85 @@ form ~ .valid {
   color: white;
 }
 
+.search-list-grid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.search-list-card {
+  max-width: 400px;
+}
+.list-card-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 150px;
+}
+.list-card-image {
+  min-height: 150px;
+  max-width: 350px;
+  /* height: 100px; */
+}
+.list-card-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 300px;
+  margin-top: 5px;
+}
+.list-card-result-info {
+  margin-left: 10px;
+}
+.list-card-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+
+.footer {
+  background-color: #D9D9D9;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: white;
+
+  margin-top: 15px;
+  padding: 15px;
+
+  font-family: "Roboto";
+  font-size: 12px;
+}
+.footer-company {
+  display: flex;
+  align-items: center;
+}
+.footer-appname {
+  font-family: "Ruslan Display";
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 5px;
+}
+.footer-social-icons {
+  width: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 25px;
+}
+.footer-company, .footer-company-links, .footer-contact, .footer-support, .footer-support-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.footer-support, .footer-support-links {
+  text-align: right;
+}
+.footer-support-title, .footer-company-title {
+  font-weight: 500;
+}
 
 
 /* Media Query for iPhone-sized screens */

@@ -5,30 +5,35 @@ import { faFacebook, faSquareXTwitter, faInstagram, faGithub, faLinkedin, faSnap
 function Footer() {
   return (
     <footer className="footer">
-      <div>
-        <div id='company'>
-          <h3>Company</h3>
-          <Link to='#'>About</Link>
-          <Link to='#'>Careers</Link>
-          <Link to='#'>Terms</Link>
-          <Link to='#'>Privacy</Link>
+        <div className="footer-company">
+          <div className="footer-company-title">Company</div>
+          <div className="footer-company-links">
+            <Link to='#'>About</Link>
+            <Link to='#'>Careers</Link>
+            <Link to='#'>Terms</Link>
+            <Link to='#'>Privacy</Link>
+          </div>
         </div>
-        <div id='support'>
-          <h3>Support</h3>
-          <Link to='#'>FAQs</Link>
-          <Link to='#'>Trust and Safety</Link>
-          <Link to='#'>Cookie preferences</Link>
-          <Link to='#'>Report a safety issue</Link>
+        <div className="footer-contact">
+          <div className="footer-appname">Venyou</div>
+          <div className="footer-social-icons">
+            <FontAwesomeIcon icon={faFacebook} />
+            <FontAwesomeIcon icon={faSquareXTwitter} />
+            <FontAwesomeIcon icon={faInstagram} />
+            <FontAwesomeIcon icon={faGithub} />
+            <FontAwesomeIcon icon={faLinkedin} />
+            <FontAwesomeIcon icon={faSnapchat} />
+          </div>
         </div>
-        <div id='contact'>
-          <FontAwesomeIcon icon={faFacebook} />
-          <FontAwesomeIcon icon={faSquareXTwitter} />
-          <FontAwesomeIcon icon={faInstagram} />
-          <FontAwesomeIcon icon={faGithub} />
-          <FontAwesomeIcon icon={faLinkedin} />
-          <FontAwesomeIcon icon={faSnapchat} />
+        <div className="footer-support">
+          <div className="footer-support-title">Support</div>
+          <div className="footer-support-links">
+            <Link to='#'>FAQs</Link>
+            <Link to='#'>Trust and Safety</Link>
+            <Link to='#'>Cookie Preferences</Link>
+            <Link to='#'>Report Issue</Link>
+          </div>
         </div>
-      </div>
     </footer>
   );
 }
