@@ -6,7 +6,7 @@ Looking for a cool art gallery to host your birthday party? Need a unique venue 
 
 #### Event Hosters
 
-Event hosters will be able to find venues to impress their guests, no matter what kind or size of party they are throwing. They will be able to find venues in their locations, as well as filter by the type of venue they are looking for. Event hosters can communicate directly with venue owners in order to book venues and rate the venues afterwards.
+Event hosters will be able to find venues to impress their guests, no matter what kind or size of party they are throwing. They will be able to find venues in their locations, as well as filter by the type of venue they are looking for. Event hosters can communicate directly with venue owners in order to book venues and rate the venues afterwards. Venue pages will show other similar venues for ease of exploration.
 
 #### Venue Owners
 
@@ -22,7 +22,7 @@ Our app is a mobile-first design, emphasising pictures of venues to give event h
 
 Our app is made up of three main components: the header, the footer and the main body of the app.
 
-![CRH](./planning/CRH.png)
+![CHD](./planning/CHD.png)
 
 ## Backend
 

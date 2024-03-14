@@ -2,14 +2,14 @@ import {useNavigate, useParams} from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faShareFromSquare, faSpeakers, faFireplace} from '@fortawesome/pro-duotone-svg-icons'
-import {faCircleHeart as Liked, faRecordVinyl } from '@fortawesome/pro-regular-svg-icons'
+import {faShareFromSquare, faSpeakers, faFireplace, faRestroom} from '@fortawesome/pro-duotone-svg-icons'
+import {faCircleHeart as Liked, faRecordVinyl, faCheck } from '@fortawesome/pro-regular-svg-icons'
 import {faCircleHeart as Unliked, faStarSharp, faMicrophoneStand } from '@fortawesome/pro-solid-svg-icons'
 import { faWifi, faBan, faAnglesDown, faAnglesUp, faCalendarXmark } from '@fortawesome/free-solid-svg-icons'
 import userContext from '../../userContext'
 import VenueCarousel from '../Main/VenueCarousel'
 
-export default function Venue (props) {
+export default function Venue () {
 
     const [venue, setVenue] = useState()
     let {id} = useParams()
@@ -29,11 +29,13 @@ export default function Venue (props) {
     }, [])
 
     useEffect(() => {
+        if (venue) {
         const getSimilar = async() => {
             const response = await axios.get(`http://localhost:3001/venues/location/${venue.location._id}`)
             setSimilar(response.data)
         }
         getSimilar()
+    }
     }, [venue])
 
     useEffect(() => {
@@ -90,14 +92,14 @@ export default function Venue (props) {
                     <div key={index} className="text-title-24-border">{type.environment} {type.type}</div>)}
                 <div className="text-standard-14">Venue description goes here. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio perferendis asperiores explicabo corrupti! Atque est, consequatur doloremque aut maxime ipsa aliquid consequuntur asperiores molestiae aspernatur facere molestias suscipit, exercitationem rerum.</div>
                 <div className="detail-body-bubbles">
-                    <div className="text-bubble-black">Example</div>
-                    <div className="text-bubble-black">Example</div>
-                    <div className="text-bubble-black">Example</div>
+                    <div className="text-bubble-black">Impressive sound system</div>
+                    <div className="text-bubble-black">Festive atmosphere</div>
+                    <div className="text-bubble-black">Highly rated by event hosts</div>
                 </div>
                 <div className="detail-body-bubbles">
-                    <div className="text-bubble-white">Example</div>
-                    <div className="text-bubble-white">Example</div>
-                    <div className="text-bubble-white">Example</div>
+                    <div className="text-bubble-white">College reunion</div>
+                    <div className="text-bubble-white">Wedding</div>
+                    <div className="text-bubble-white">Gala</div>
                 </div>
             </div>
             <div className="detail-body-container">
@@ -111,22 +113,22 @@ export default function Venue (props) {
                     </div>
                     <div className="text-standard-14" itemID="text-align-Left">
                         {venue.type.map(type => 
-                            <div>
+                            <div key={type._id}>
                                 {type.environment} {type.type}
                             </div>)}
                         <div>{venue.max_ppl} people</div>
-                        <div>Y/N</div>
-                        <div><FontAwesomeIcon icon={faWifi} /></div>
+                        <div><FontAwesomeIcon icon={faCheck} /></div>
+                        <div><FontAwesomeIcon icon={faWifi} /> Wifi<br /><FontAwesomeIcon icon={faRestroom} /> Restrooms</div>
                     </div>
                 </div>
             </div>
             <div className="detail-body-container">
                 <div className="text-title-20-border">Special Features</div>
                 <div className="text-standard-14" itemID="flexgrid-list">
-                    <div><FontAwesomeIcon icon={faSpeakers} /></div>
-                    <div><FontAwesomeIcon icon={faRecordVinyl} /></div>
-                    <div><FontAwesomeIcon icon={faMicrophoneStand} /></div>
-                    <div><FontAwesomeIcon icon={faFireplace} /></div>
+                    <div><FontAwesomeIcon icon={faSpeakers} /> Sound system</div>
+                    <div><FontAwesomeIcon icon={faRecordVinyl} /> Record player</div>
+                    <div><FontAwesomeIcon icon={faMicrophoneStand} /> Microphones and microphone stands</div>
+                    <div><FontAwesomeIcon icon={faFireplace} /> Fireplace</div>
                 </div>
             </div>
             <div className="detail-body-container">
@@ -173,7 +175,5 @@ export default function Venue (props) {
             </div>
             <button className="detail-button-back">back to search</button>
         </div>
-    ) } else { return (
-        <div className="loading">Loading...</div>
-    )}
+    ) } else { return <div className="loading">Loading...</div> }
 }
