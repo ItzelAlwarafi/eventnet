@@ -72,7 +72,7 @@ export default function Venue () {
     return (
         <div className="venue-detail-page">
             <VenueCarousel/>
-            <img src={venue.img[0]} alt={venue.name} className="list-card-image"/>
+            
             {/* make this a carousel of the image array */}
             <div className="detail-header-container">
                 <div className="text-title-32">{venue.name}</div>

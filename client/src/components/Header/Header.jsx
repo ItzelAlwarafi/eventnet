@@ -11,6 +11,7 @@ import LogIn from './LogIn'
 const Header = () => {
 
     const { loggedIn } = useContext(userContext)
+    
     const [navBar, openNavBar] = useState(false)
     const [userBar, openUserBar] = useState(false)
 
@@ -21,7 +22,8 @@ const Header = () => {
         <div className="header"> 
             <div className="header-primary">
                 <FontAwesomeIcon icon={faBars} inverse className="side-menu-button" onClick={toggleNavBar}/>
-                { navBar ? <Sidebar toggleNavBar={toggleNavBar} /> : null }
+                { navBar ? <Sidebar toggleNavBar={toggleNavBar} /> : null  }
+               
                 <div className="app-title"> Venyou </div>
                 <FontAwesomeIcon icon={faUser} className="user-icon" onClick={toggleUser} />
             </div>
