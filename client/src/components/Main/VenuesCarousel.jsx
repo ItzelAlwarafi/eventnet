@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { Link } from 'react-router-dom'
 
+
 export default function VenuesCarousel() {
 
     const [venues, setVenues] = useState([])
@@ -32,13 +33,13 @@ export default function VenuesCarousel() {
     }
 
     const settings = {
-        dots: false,
+        dots: true,
         infinite: true,
         speed: 500,
         slidesToShow: 5, 
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 5500,
         pauseOnHover: true,
         pauseOnFocus: true,
         responsive: [
@@ -65,9 +66,13 @@ export default function VenuesCarousel() {
             <Slider {...settings}>
                 {shuffleArray(venues.flatMap((venue, index) =>
                     venue.img.map((imgUrl, imgIndex) =>
-                        <Link key={`img-${index}-${imgIndex}`} to={`/venues/${venue._id}`}>
-                            <img className='galleryimg' src={imgUrl} alt='img' />
+                    
+                        <Link  key={`img-${index}-${imgIndex}`} to={`/venues/${venue._id}`}>
+                           <div className='img-wrapper'> 
+                           <img className='galleryimg' src={imgUrl} alt='img'  />
+                           </div>
                         </Link>
+                       
                     )
                 ))}
             </Slider>
