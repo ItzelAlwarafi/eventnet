@@ -13,8 +13,9 @@ export default function VenueCarousel() {
     useEffect(() => {
         const getVenue = async () => {
             try {
-                const response = await axios.get(`http://localhost:3001/venues/${id}`)
+                const response = await axios.get(`http://localhost:3001/venues/id/${id}`)
                 setVenue(response.data)
+                console.log(response)
             } catch (error) {
                 console.error('Error fetching venue:', error)
             }
@@ -41,7 +42,7 @@ export default function VenueCarousel() {
             {
                 breakpoint: 600,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: 1,
                     slidesToScroll: 1
                 }
             }
@@ -54,7 +55,9 @@ export default function VenueCarousel() {
                 {venue.img.length > 0 ? (
                     <Slider {...settings}>
                         {venue.img.map((imgUrl, imgIndex) => (
+                            <div className='img-wrapper-Venue'>  
                             <img key={`img-${imgIndex}`} className='Venuegalleryimg' src={imgUrl} alt={`img-${imgIndex}`} />
+                            </div>
                         ))}
                     </Slider>
                 ) : (

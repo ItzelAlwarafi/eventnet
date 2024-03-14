@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 const Sidebar = ({toggleNavBar}) => {
 
@@ -10,7 +10,7 @@ const Sidebar = ({toggleNavBar}) => {
         <Link to="/register" className="Side-link" onClick={toggleNavBar}>Sign up</Link>
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar
