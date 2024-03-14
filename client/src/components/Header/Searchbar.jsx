@@ -31,7 +31,10 @@ export default function SearchBar () {
 
       <div className='dropdown-content'>
         {results.map((result, index) =>
-          <Link key={index} to={`/venues/${result._id}`}>{result.name}</Link>
+        <div key={index}>
+          <img src={result.img[0]} />
+          <Link to={`/venues/${result._id}`}>{result.name}</Link>
+        </div>
         )}
 
       </div>
