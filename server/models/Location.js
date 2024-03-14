@@ -3,9 +3,10 @@ const {Schema} =require ('mongoose')
 
 const Location = new Schema (
     {
-        city:{type:String,require:true},
-        state:{type:String,require:true},
-        country:{type:String,require:true},
+        city: {type: String, required: true},
+        state: {type: String, required: false},
+        country: {type: String, required: true},
+        skyline: {type: String, required: true}
     },
     {timestamp:true}
 )

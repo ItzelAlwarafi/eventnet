@@ -9,6 +9,8 @@ import Favourited from './Favourited'
 import Owned from './Owned'
 import Account from './Account'
 import Location from './Location'
+import LocationDetails from './LocationDetails'
+import TypeDetails from './TypeDetails'
 
 export default function Main () {
     return (
@@ -17,7 +19,9 @@ export default function Main () {
                 <Route path='/' element={<Home />} />
                 <Route path='/register' element={<UserSignUpLogIn />} />
                 <Route path='/locations' element={<Location />} />
+                <Route path='/locations/:id' element={<LocationDetails />} />
                 <Route path='/types' element={<SpaceType />} />
+                <Route path='/types/:id' element={<TypeDetails />} />
                 <Route path='/venues/:id' element={<Venue />} />
                 <Route path='/venues/:id/booking' element={<BookingForm />} />
                 <Route path='/account/:id' element={<Account />} />
