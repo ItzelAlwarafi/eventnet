@@ -212,6 +212,151 @@ form ~ .valid {
   margin-top: 1rem;
   cursor: pointer;
 }
+@import url('https://fonts.googleapis.com/css2?family=Ruslan+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+.loading {
+  font-family: 'Ruslan Display';
+  font-size: 12px;
+}
+
+.venue-detail-page, .spacetype-list-page, .location-list-page, .venue-list-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.search-list-grid {
+  display: flex;
+  direction: column;
+  justify-content: center;
+}
+.search-list-card {
+  margin-top: 20px;
+}
+
+.detail-body-container {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.search-list-title {
+  font-family: "Bebas Neue";
+  font-size: 32px;
+}
+
+.text-title-24-border {
+  font-family: "Bebas Neue";
+  font-size: 24px;
+}
+.text-title-20-border {
+  font-family: "Bebas Neue";
+  font-size: 20px;
+}
+.text-title-32 {
+  font-family: "Bebas Neue";
+  font-size: 32px;
+}
+.text-title-24 {
+  font-family: "Bebas Neue";
+  font-size: 24px;
+}
+.text-title-20 {
+  font-family: "Bebas Neue";
+  font-size: 20px;
+}
+.text-caps-16 {
+  font-family: "Roboto";
+  font-size: 16px;
+  text-transform: uppercase;
+}
+.text-caps-14 {
+  font-family: "Roboto";
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.text-caps-12 {
+  font-family: "Roboto";
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.text-standard-16 {
+  font-family: "Roboto";
+  font-size: 16px;
+}
+.text-standard-14 {
+  font-family: "Roboto";
+  font-size: 14px;
+}
+.text-standard-12 {
+  font-family: "Roboto";
+  font-size: 12px;
+}
+
+.text-body-split {
+  display: flex;
+  flex-direction: row;
+}
+
+#text-align-Right {
+  text-align: right;
+}
+#text-align-Left {
+  text-align: left;
+}
+#flexgrid-list {
+  display: flex;
+  column-count: 2;
+  column-gap: 10px;
+}
+
+.detail-button-back {
+  font-family: "Roboto";
+  color: white;
+  background-color: black;
+}
+.list-card-button-explore {
+  font-family: "Roboto";
+  color: white;
+  background-color: black;
+}
+.list-card-button-explore-venue {
+  font-family: "Roboto";
+  color: white;
+  background-color: black;
+}
+
+.list-card-dropdown {
+  display: block;
+}
+.list-card-button-dropdown-open {
+  background-color: black;
+}
+.list-card-button-dropdown-close {
+  background-color: black;
+}
+
+.text-body-bubbles {
+  font-family: "Roboto";
+  font-size: 12px;
+  text-transform: uppercase;
+  border-radius: 20px;
+}
+.text-bubble-white {
+  background-color: white;
+  color: black;
+  border-color: solid black .5px;
+  padding: 1px 3px;
+}
+.text-bubble-black {
+  background-color: black;
+  color: white;
+  padding: 1px 3px;
+}
+
+
+
 
 /* Media Query for iPhone-sized screens */
 @media only screen and (max-width: 414px) {

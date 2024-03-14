@@ -6,16 +6,16 @@ import {faShareFromSquare} from '@fortawesome/pro-duotone-svg-icons'
 import {faCircleHeart as Liked } from '@fortawesome/pro-regular-svg-icons'
 import {faCircleHeart as Unliked, faStarSharp } from '@fortawesome/pro-solid-svg-icons'
 import userContext from '../../userContext'
+import VenueCarousel from '../Main/VenueCarousel'
 
-export default function Venue () {
-    // let navigate = useNavigate()
+export default function Venue (props) {
 
-    const {user, setUser} = useContext(userContext)
-    const {loggedIn} = useContext(userContext)
     const [venue, setVenue] = useState()
     let {id} = useParams()
     const [liked, setLiked] = useState(false)
     const navigate = useNavigate()
+     const {user, setUser} = useContext(userContext)
+    const {loggedIn} = useContext(userContext)
 
     useEffect(() => {
         const getVenues = async() => {
@@ -57,7 +57,8 @@ export default function Venue () {
     if (venue) {
     return (
         <div className="venue-detail-page">
-            <img src={venue.img[0]} alt={venue.name} className="list-card-image"/>
+            <VenueCarousel/>
+            {/* <img src={venue.img[0]} alt={venue.name} className="list-card-image"/> */}
             {/* make this a carousel of the image array */}
             <div className="detail-header-container">
                 <div className="text-title-32">{venue.name}</div>
