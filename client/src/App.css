@@ -13,6 +13,84 @@
   font-weight: 400;
   font-style: normal;
 }
+.ruslan-display-regular {
+  font-family: "Ruslan Display", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.roboto-thin {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.roboto-light {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.roboto-medium {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.roboto-bold {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.roboto-black {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.roboto-thin-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.roboto-light-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.roboto-regular-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.roboto-medium-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.roboto-bold-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.roboto-black-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+
 .GalleryContainer{
  width: 100%;
   justify-content: center;
@@ -217,6 +295,63 @@ form ~ .valid {
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 
+.header-primary {
+  width: 100%;
+  height: 50px;
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 5%;
+  padding-right: 5%;
+
+}
+.app-title {
+  font-family: 'Ruslan Display';
+  color: white;
+  font-size: 32px;
+}
+.user-icon {
+  background-color: white;
+  padding: 5px 6px;
+  border-radius: 100%;
+}
+/* .sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1050;
+  top: 0;
+  left: 0;
+  background: linear-gradient(-45deg, black, black black, white);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  text-align:center;
+}  
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+
+}
+.sidenav a:hover{
+  color: #f1f1f1;
+}
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  color: white;
+} */
+
+
 .loading {
   font-family: 'Ruslan Display';
   font-size: 12px;
@@ -226,6 +361,8 @@ form ~ .valid {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 .search-list-grid {
   display: flex;
@@ -247,12 +384,24 @@ form ~ .valid {
 }
 
 .text-title-24-border {
+  padding-top: 5px;
   font-family: "Bebas Neue";
   font-size: 24px;
+  height: 36px;
+  border-top: .5px solid black;
+  border-bottom: .5px solid black;
+  border-bottom-style: double;
+  margin-bottom: 10px;
 }
 .text-title-20-border {
   font-family: "Bebas Neue";
   font-size: 20px;
+  padding-top: 5px;
+  height: 30px;
+  border-top: .5px solid black;
+  border-bottom: .5px solid black;
+  border-bottom-style: double;
+  margin-bottom: 10px;
 }
 .text-title-32 {
   font-family: "Bebas Neue";
@@ -337,22 +486,33 @@ form ~ .valid {
   background-color: black;
 }
 
-.text-body-bubbles {
+.detail-body-bubbles {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* margin-top: 10px; */
+}
+.text-bubble-white, .text-bubble-black {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   font-family: "Roboto";
   font-size: 12px;
   text-transform: uppercase;
+
   border-radius: 20px;
+  padding: 2px 10px;
+  margin-right: 10px;
 }
 .text-bubble-white {
   background-color: white;
   color: black;
   border-color: solid black .5px;
-  padding: 1px 3px;
 }
 .text-bubble-black {
   background-color: black;
   color: white;
-  padding: 1px 3px;
 }
 
 
