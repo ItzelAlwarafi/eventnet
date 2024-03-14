@@ -13,6 +13,7 @@
   font-weight: 400;
   font-style: normal;
 }
+
 .ruslan-display-regular {
   font-family: "Ruslan Display", sans-serif;
   font-weight: 400;
@@ -88,19 +89,6 @@
   font-family: "Roboto", sans-serif;
   font-weight: 900;
   font-style: italic;
-}
-
-
-.GalleryContainer{
- width: 100%;
-  justify-content: center;
-  
-
-}
-.galleryimg{
-  width: 40vmax;
-  height: 25vmax;
-  margin: 0%;
 }
 
 

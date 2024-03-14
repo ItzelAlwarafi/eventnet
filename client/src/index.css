@@ -1,0 +1,20 @@
+.GalleryContainer{
+  margin-top: 5%;
+   width: 250em;
+ 
+}
+
+.galleryimg{  
+    width: 55vmax;
+    height: 30vmax;
+  }
+
+.img-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60vmax;
+    height: 35vmax;
+   
+
+}
