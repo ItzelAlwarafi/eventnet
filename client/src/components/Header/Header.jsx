@@ -18,13 +18,18 @@ const Header = () => {
     const toggleUser = () => openUserBar(!userBar)
 
     return (
-        <div className='header'> 
-            <h1> Venyou </h1>
-            <FontAwesomeIcon icon={faBars} onClick={toggleNavBar}/>
-            { navBar ? <Sidebar toggleNavBar={toggleNavBar} /> : null }
-            <SearchBar />
-            { loggedIn ? <FontAwesomeIcon icon={faUser} onClick={toggleUser} /> : <LogIn /> }
-            { userBar ? <UserSidebar toggleUser={toggleUser} /> : null }
+        <div className="header"> 
+            <div className="header-primary">
+                <FontAwesomeIcon icon={faBars} inverse className="side-menu-button" onClick={toggleNavBar}/>
+                { navBar ? <Sidebar toggleNavBar={toggleNavBar} /> : null }
+                <div className="app-title"> Venyou </div>
+                { loggedIn ? <FontAwesomeIcon icon={faUser} className="user-icon" onClick={toggleUser} /> : <LogIn /> }
+                { userBar ? <UserSidebar toggleUser={toggleUser} /> : null }
+            </div>
+            <div className="header-search">
+                <SearchBar />
+            </div>
+            
         </div>
     )
 }

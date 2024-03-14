@@ -22,6 +22,7 @@ export default function Main () {
                 <Route path='/locations/:id' element={<LocationDetails />} />
                 <Route path='/types' element={<SpaceType />} />
                 <Route path='/types/:id' element={<TypeDetails />} />
+                <Route path='/venues' element={<Venue />} />
                 <Route path='/venues/:id' element={<Venue />} />
                 <Route path='/venues/:id/booking' element={<BookingForm />} />
                 <Route path='/account/:id' element={<Account />} />
