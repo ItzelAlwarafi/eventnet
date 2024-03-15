@@ -10,6 +10,7 @@ export default function SearchBar () {
   const handleSearch = async() => {
     const response = await axios.get(`http://localhost:3001/search/${searchTerm}`)
     setResults(response.data)
+    toggleSearchBar()
   }
 
   const handleKeydown = (event) => {
@@ -17,8 +18,12 @@ export default function SearchBar () {
       handleSearch()
     }
   }
+const [searchBar ,openSearchBar] = useState(false)
 
-  const removeSearch = () => setResults([])
+  const toggleSearchBar = () => openSearchBar(!searchBar)
+
+  const removeSearch = () => {setResults([]) 
+    toggleSearchBar()}
 
   return (
     <div className="searchbar">
@@ -29,19 +34,20 @@ export default function SearchBar () {
         onChange={(e) => setSearchTerm(e.target.value)}
         onKeyDown={handleKeydown} 
       />
-
-      <div className="searchbar-result-dropdown">
+     {searchBar ? 
+      <div className="searchbar-result-dropdown" >
         {results.map((result, index) =>
         <div className="searchbar-result-card" key={index}>
           <img className="searchbar-result-card-image-containter">
             {/* <img className="searchbar-result-card-image" src={result.img[0]} /> */}
           </img>
-          <Link to={`/venues/${result._id}`} className="text-title-24" onClick={removeSearch}>{result.name}</Link>
+          <Link to={`/venues/${result._id}`} className="text-title-24 search-link-text"  onClick={removeSearch }>{result.name}  </Link>
         </div>
         )}
 
       </div>
-      
+      : null }
     </div>
+  
   )
 }
