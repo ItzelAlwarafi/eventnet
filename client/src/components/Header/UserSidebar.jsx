@@ -13,8 +13,8 @@ export default function UserSidebar ({toggleUser}) {
     return (
         <div className="account-menu">
             <div className="account-menu-header">
-                <a className="account-menu-closebtn"></a>
-                {/* <a href="javascript:void(0)" className="account-menu-closebtn" onclick="closeMenu()">&times;</a> */}
+
+                <a href="javascript:void(0)" class="account-menu-closebtn" onClick={toggleUser}>&times;</a>
                 {/* <div className="account-menu-title">welcome</div> */}
                 <a className="account-menu-header-placeholder">O</a>
             </div>

@@ -1,11 +1,12 @@
 .GalleryContainer{
-  margin-top: 5%;
-   width: 100%;
+  margin-top: 20%;
+   width: 400px;
+   margin-left: 22px;
   
 }
 
 .galleryimg  {  
-    width: 20vmax;
+    width: 12rem;
     height: 15vmax;
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
   }
@@ -13,7 +14,7 @@
     box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.5);
 }
 .img-wrapper{
-    margin-left: 20em;
+    margin-left: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -78,8 +79,4 @@
     margin: 15px;
     text-decoration: none;
     color:white
-}
-.side-menu-button{
-    z-index: 2000;
-    
 }

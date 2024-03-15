@@ -2,20 +2,14 @@ import { Link } from 'react-router-dom'
 
 const Sidebar = ({toggleNavBar}) => {
 
-  function openMenu() {
-    document.getElementById("sideMenu").style.width = "75%";
-  }
-  function closeMenu() {
-    document.getElementById("sideMenu").style.width = "0";
-  }
+
 
   return (
   <div className="sidenav">
       <div className="sidenav-header">
         <a className="sidenav-header-placeholder">O</a>
         <div className="sidenav-title">Venyou</div>
-        {/* <a href="javascript:void(0)" className="sidenav-closebtn" onClick="closeMenu()">&times;</a> */}
-        <a className="sidenav-closebtn"></a>
+        <a href="#" className="sidenav-closebtn" onClick={toggleNavBar}>&times;</a>
       </div>
       <div className="sidenav-links">
         <Link to="/locations" className="Side-link" onClick={toggleNavBar}>Locations</Link>

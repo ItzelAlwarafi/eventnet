@@ -16,8 +16,9 @@ import TypeDetails from './TypeDetails'
 export default function Main () {
     return (
         <div>
+           
             <Routes>
-                <Route path='/' element={<Home />} />
+                <Route path='/' element={<Home/>} />
                 <Route path='/register' element={<UserSignUpLogIn />} />
                 <Route path='/locations' element={<Location />} />
                 <Route path='/locations/:id' element={<LocationDetails />} />
