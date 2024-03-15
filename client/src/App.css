@@ -177,15 +177,15 @@ button:focus {
 }
 .userHost  > label ,input {
   font-family: "Bebas Neue", sans-serif;
-  font-size: xx-large;
+  font-size: large;
  
 }
 input[type="radio"] {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   border: 3px solid #000;
   outline: none;
@@ -194,8 +194,8 @@ input[type="radio"] {
 input[type="radio"]::after {
   content: "";
   display: block;
-  width: 15px;
-  height: 15px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: #000;
   position: absolute;
@@ -348,9 +348,21 @@ form ~ .valid {
   text-indent: 10px;
 }
 .searchbar-result-dropdown {
-  margin-top: 10px;
-  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-top: 150px;
+  margin-left: -20px;
+  position: fixed;
+  background-color: white;
+  width: 350px;
+  text-indent: 15px;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.5);
+  padding:2px;
 }
+
 .searchbar-result-card {
 
 }
@@ -379,15 +391,26 @@ form ~ .valid {
   display: flex;
   justify-content: center;
   align-items: center;
-
   margin-top: 15px;
 }
 .login-form-format {
   display: flex;
   width: 380px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+}
+.login-form-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  
 }
 .login-form-fields {
-  
+  margin-left: 60px;
 }
 .login-input-field {
   font-family: "Roboto";
@@ -401,10 +424,12 @@ form ~ .valid {
   background: linear-gradient(135deg, #1c1c1c, #706d6d);
   width: 150px;
   border-radius: 20px;
+  justify-content: center;
   text-align: center;
   padding: 10px 0px;
-
   align-self: center;
+  margin-top: 5px;
+  margin-left: 25px;
 }
 .login-error {
   margin-top: 10px;
@@ -562,6 +587,11 @@ form ~ .valid {
 .text-title-24 {
   font-family: "Bebas Neue";
   font-size: 24px;
+  text-decoration: none;
+
+}
+.search-link-text{
+  color: black
 }
 .text-title-22 {
   font-family: "Bebas Neue";

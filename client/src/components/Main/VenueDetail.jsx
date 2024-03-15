@@ -73,11 +73,10 @@ export default function Venue () {
     if (venue) {
     return (
         <div className="venue-detail-page">
-            <div className="detail-carousel-container">
                 <VenueCarousel/>
-            </div>
             <div className="detail-header-container">
                 <div className="detail-header-primary">
+                    <VenueCarousel/>
                     <div className="text-title-32">{venue.name}</div>
                     <div className="header-interaction-icons">
                         <FontAwesomeIcon icon={faShareFromSquare} />

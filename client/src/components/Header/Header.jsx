@@ -7,7 +7,7 @@ import Sidebar from './Sidebar'
 import UserSidebar from './UserSidebar'
 import userContext from '../../userContext'
 import LogIn from './LogIn'
-
+import { Link } from 'react-router-dom'
 const Header = () => {
 
     const { loggedIn } = useContext(userContext)
@@ -23,8 +23,9 @@ const Header = () => {
             <div className="header-primary">
                 <FontAwesomeIcon icon={faBars} inverse className="side-menu-button" onClick={toggleNavBar}/>
                 { navBar ? <Sidebar toggleNavBar={toggleNavBar} /> : null  }
-               
+               < Link to="/" className='link-home-logo' > 
                 <div className="app-title"> Venyou </div>
+                </Link>
                 <FontAwesomeIcon icon={faUser} className="user-icon" onClick={toggleUser} />
             </div>
 
