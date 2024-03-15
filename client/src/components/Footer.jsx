@@ -5,16 +5,26 @@ import { faFacebook, faSquareXTwitter, faInstagram, faGithub, faLinkedin, faSnap
 function Footer() {
   return (
     <footer className="footer">
-        <div className="footer-company">
-          <div className="footer-company-title">Company</div>
-          <div className="footer-company-links">
-            <Link to='#'>About</Link>
-            <Link to='#'>Careers</Link>
-            <Link to='#'>Terms</Link>
-            <Link to='#'>Privacy</Link>
-          </div>
+      <div className="footer-company">
+        <div className="footer-company-title">Company</div>
+        <div className="footer-company-links">
+          <Link to='#' className="footer-link">About</Link>
+          <Link to='#' className="footer-link">Careers</Link>
+          <Link to='#' className="footer-link">Terms</Link>
+          <Link to='#' className="footer-link">Privacy</Link>
         </div>
-        <div className="footer-contact">
+      </div>
+      <div className="footer-support">
+        <div className="footer-support-title">Support</div>
+        <div className="footer-support-links">
+          <Link to='#' className="footer-link">FAQs</Link>
+          <Link to='#' className="footer-link">Trust and Safety</Link>
+          <Link to='#' className="footer-link">Cookie Preferences</Link>
+          <Link to='#' className="footer-link">Report Issue</Link>
+        </div>
+      </div>
+      <div className="footer-contact">
+        <div className="footer-copyright">©2024</div>
           <div className="footer-appname">Venyou</div>
           <div className="footer-social-icons">
             <FontAwesomeIcon icon={faFacebook} />
@@ -23,15 +33,6 @@ function Footer() {
             <FontAwesomeIcon icon={faGithub} />
             <FontAwesomeIcon icon={faLinkedin} />
             <FontAwesomeIcon icon={faSnapchat} />
-          </div>
-        </div>
-        <div className="footer-support">
-          <div className="footer-support-title">Support</div>
-          <div className="footer-support-links">
-            <Link to='#'>FAQs</Link>
-            <Link to='#'>Trust and Safety</Link>
-            <Link to='#'>Cookie Preferences</Link>
-            <Link to='#'>Report Issue</Link>
           </div>
         </div>
     </footer>

@@ -11,7 +11,11 @@ const Sidebar = ({toggleNavBar}) => {
 
   return (
   <div className="sidenav">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()">&times;</a>
+      <div className="sidenav-header">
+        <a className="sidenav-header-placeholder">O</a>
+        <div className="sidenav-title">Venyou</div>
+        <a href="javascript:void(0)" class="sidenav-closebtn" onclick="closeMenu()">&times;</a>
+      </div>
       <div className="sidenav-links">
         <Link to="/locations" className="Side-link" onClick={toggleNavBar}>Locations</Link>
         <Link to="/types" className="Side-link" onClick={toggleNavBar}>Type of space</Link>

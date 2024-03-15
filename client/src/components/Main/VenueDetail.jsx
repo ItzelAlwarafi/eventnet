@@ -71,9 +71,8 @@ export default function Venue () {
     if (venue) {
     return (
         <div className="venue-detail-page">
-            <VenueCarousel/>
+            {/* <VenueCarousel/> */}
             
-            {/* make this a carousel of the image array */}
             <div className="detail-header-container">
                 <div className="text-title-32">{venue.name}</div>
                 <FontAwesomeIcon icon={faShareFromSquare} />

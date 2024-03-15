@@ -36,29 +36,49 @@ export default function LocationDetails () {
 
     if (venues && location) {
         return (
-            <div>
-                <img className='skyline' src={location.skyline} />
-                { venues.map(venue => (
-                    <div key={venue._id}>
-                        <img src={venue.img[0]} alt={venue.name} onClick={()=> showVenue(venue._id)} />
-                        <h3 onClick={() => showVenue(venue._id)}>{venue.name }</h3>
-                        { venue.type.map(type => 
-                            <h5 key={type._id}>{type.environment} {type.type}</h5>)}
-                        { details ? <div>
-                            <FontAwesomeIcon icon={faCircleCaretUp} onClick={showDetails} /> 
-                            <dl>
-                            <dt>Max Capacity</dt>
-                            <dd>{venue.max_ppl} people</dd>
-
-                            <dt>Average price</dt>
-                            <dd>${new Intl.NumberFormat().format(venue.price)}/hour</dd>
-                        </dl>
-                        </div>
-                        : <FontAwesomeIcon icon={faCircleCaretDown} onClick={showDetails} />}
+            <div className="location-search-results-page">
+                <div className="location-search-results-header">
+                    <div className="search-list-skyline-container">
+                        <img className="search-list-skyline" src={location.skyline} />
                     </div>
-                ))}
+                    <div className="search-list-title">Venues in {location.city}</div>
+                </div>
+                <div className="search-list-grid">
+                    { venues.map(venue => (
+                        <div className="search-list-card" key={venue._id}>
+                            <div className="location-list-card-image-container">
+                                <img clasName="location-list-card-image" src={venue.img[0]} alt={venue.name} onClick={()=> showVenue(venue._id)} />
+                            </div>
+                            <div className="location-list-split">
+                                <div className="location-list-info">
+                                    <div className="location-list-info-primary">
+                                        <div className="text-title-28" onClick={() => showVenue(venue._id)}>{venue.name }</div>
+                                        { venue.type.map(type =>
+                                            <div className="text-caps-16" key={type._id}>{type.environment} {type.type}</div>
+                                        )}
+                                    </div>
+                                    { details ? <div className="text-standard-16 location-dropdown-split">
+                                        <FontAwesomeIcon className="location-list-card-dropdown-button-up" icon={faCircleCaretUp} onClick={showDetails} /> 
+                                        <div className="location-list-info-secondary">
+                                            <div>Max Capacity: {venue.max_ppl} people</div>
+                                            <div>Average Price: ${new Intl.NumberFormat().format(venue.price)}/hour</div>
+                                        </div>
+                                    </div>
+                                    : <FontAwesomeIcon className="location-list-card-dropdown-button-down" icon={faCircleCaretDown} onClick={showDetails} />}
+                                </div>
+                                <div className="list-card-button-container">
+                                    <div className="list-card-button-explore" onClick={() => showVenue(venue._id)}>explore</div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+                
+                
             </div>
         )
+
+        
     } else {
         return <p>No venues at this location.</p>
     }
