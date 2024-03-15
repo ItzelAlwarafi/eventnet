@@ -14,7 +14,8 @@ const Sidebar = ({toggleNavBar}) => {
       <div className="sidenav-header">
         <a className="sidenav-header-placeholder">O</a>
         <div className="sidenav-title">Venyou</div>
-        <a href="javascript:void(0)" class="sidenav-closebtn" onclick="closeMenu()">&times;</a>
+        {/* <a href="javascript:void(0)" className="sidenav-closebtn" onClick="closeMenu()">&times;</a> */}
+        <a className="sidenav-closebtn"></a>
       </div>
       <div className="sidenav-links">
         <Link to="/locations" className="Side-link" onClick={toggleNavBar}>Locations</Link>
