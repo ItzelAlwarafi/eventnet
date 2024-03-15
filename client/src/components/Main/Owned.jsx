@@ -15,17 +15,37 @@ export default function Owned () {
     }
 
     return(
-        <div>
-            <button type='button'><Link to={`/account/${id}/register-venue`} >Register a new venue</Link></button>
-            { venues.length === 0 ? 
-                <p>No venues registered</p> :
-                venues.map(venue => (
-                    <div key={venue._id}>
-                    <img src={venue.img[0]} onClick={() => handleClick(venue._id)} />
-                    <Link to={`/venues/${venue._id}`} >{venue.name}</Link>
-                    <h5>{venue.location.city}, {venue.location.state}, {venue.location.country}</h5>
-                    </div>
+        <div className="owned-venues-page">
+            <div className="search-list-title">My Venues</div>
+            <div className="owned-register-new-button" type='button'><Link to={`/account/${id}/register-venue`} className="owned-register-new-button-text">Register New Venue</Link></div>
+            <div className="text-title-24-border">Owned Venues</div>
+            <div className="search-list-grid">
+                { venues.length === 0 ?
+                    <div className="text-standard-16">No venues registered</div> :
+                    venues.map(venue => (
+                        <div className="similar-list-card" key={venue._id}>
+                            <div className="similar-list-card-image-container">
+                                <img className="location-list-card-image" src={venue.img[0]} onClick={() => handleClick(venue._id)} />
+                            </div>
+                            <div className="location-list-split">
+                                <div className="location-list-info">
+                                    <div className="location-list-info-primary">
+                                        <Link to={`/venues/${venue._id}`} className="text-title-24 anti-link">{venue.name}</Link>
+                                        <div className="text-caps-16">{venue.location.city}, {venue.location.state}, {venue.location.country}</div>
+                                    </div>
+                                </div>
+                                <div className="owned-edit-button-container">
+                                    <div className="owned-edit-button">edit</div>
+                                </div>
+                            </div>
+
+
+
+                            
+                        
+                        </div>
                 ))}
+            </div>
         </div>
     )
 }
