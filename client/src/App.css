@@ -312,7 +312,7 @@ form ~ .valid {
   background-color: white;
   padding: 5px 6px;
   border-radius: 100%;
-  
+
 
   margin-right: 20px;
 }
@@ -451,13 +451,7 @@ form ~ .valid {
   margin-right: 20px;
 }
 
-
-.loading {
-  font-family: 'Ruslan Display';
-  font-size: 12px;
-}
-
-.venue-detail-page, .spacetype-list-page, .location-list-page, .venue-list-page {
+.venue-detail-page, .spacetype-list-page, .location-list-page, .venue-list-page, .BookContainer {
   position: relative;
   top: 7rem;
   z-index: 0;
@@ -468,10 +462,10 @@ form ~ .valid {
   align-items: center; */
 
   width: 100%;
-
-  /* margin-left: 10%;
-  margin-right: 10%; */
   margin-bottom: 100px;
+}
+.BookContainer {
+  margin-bottom: 200px;
 }
 .search-list-grid {
   display: flex;
@@ -492,14 +486,38 @@ form ~ .valid {
 }
 
 .detail-body-container {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 .icon-click-boxes {
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: center;
+}
+.icon-click-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 250px;
+}
+.rules-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.detail-header-rentals {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom:10px;
+}
+.header-stars {
+  font-size: 20px;
 }
 
 .search-list-title {
@@ -518,6 +536,8 @@ form ~ .valid {
   border-bottom: .5px solid black;
   border-bottom-style: double;
   margin-bottom: 10px;
+
+  text-indent: 5%;
 }
 .text-title-20-border {
   font-family: "Bebas Neue";
@@ -528,6 +548,8 @@ form ~ .valid {
   border-bottom: .5px solid black;
   border-bottom-style: double;
   margin-bottom: 10px;
+
+  text-indent: 5%;
 }
 .text-title-32 {
   font-family: "Bebas Neue";
@@ -576,6 +598,20 @@ form ~ .valid {
 .text-body-split {
   display: flex;
   flex-direction: row;
+  /* align-items: start; */
+  justify-content: space-between;
+  width: 400;
+}
+.split-right, .split-left {
+  width: 150px;
+}
+.split-list-text {
+  margin-bottom: 5px;
+}
+.split-list-icon-set {
+  display: flex;
+  flex-direction: row;
+  min-width: 100px;
 }
 
 .text-align-Right {
@@ -584,12 +620,66 @@ form ~ .valid {
 .text-align-Left {
   text-align: left;
 }
+.text-align-Center {
+  text-align: center;
+}
+.text-align-Justify {
+  text-align: justify;
+}
+.margin-left {
+  margin-left: 10px;
+}
+.margin-right {
+  margin-right: 10px;
+}
+.loading {
+  font-family: 'Ruslan Display';
+  font-size: 12px;
+}
+.spacer-5 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.spacer-10 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.spacer-20 {
+  height: 20px;
+}
+.bold {
+  font-weight: 300;
+}
+.italic {
+  font-style: italic;
+}
 .flexgrid-list {
   display: flex;
-  column-count: 2;
-  column-gap: 10px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 200px
 }
 
+.detail-header-container {
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 350px;
+}
+.detail-header-primary {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-interaction-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 20px;
+  width: 60px;
+}
 .detail-button-back {
   font-family: "Roboto";
   color: white;
@@ -599,6 +689,7 @@ form ~ .valid {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 10px;
 }
 .detail-venue-booking {
   font-family: "Roboto";
@@ -616,6 +707,7 @@ form ~ .valid {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
 .list-card-button-explore {
   font-family: "Roboto";
   color: white;
@@ -647,7 +739,6 @@ form ~ .valid {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  /* margin-top: 10px; */
 }
 .text-bubble-white, .text-bubble-black {
   display: flex;
@@ -661,11 +752,13 @@ form ~ .valid {
   border-radius: 20px;
   padding: 2px 10px;
   margin-right: 10px;
+  margin-top: 5px;
 }
 .text-bubble-white {
   background-color: white;
   color: black;
-  border-color: solid black .5px;
+  border: 1px solid black;
+  
 }
 .text-bubble-black {
   background-color: black;

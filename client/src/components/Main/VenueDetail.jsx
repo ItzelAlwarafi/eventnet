@@ -84,12 +84,14 @@ export default function Venue () {
                     </div>
                 </div>
                 <div className="text-caps-16">{venue.location.city}, {venue.location.state}, {venue.location.country}</div>
-                <div className="text-standard-14">{venue.street_address}</div>
+                <div className="text-standard-16 bold spacer-5">{venue.street_address}</div>
                 <div className="text-standard-12">Hosted by {venue.owner.first_name ? venue.owner.first_name  : null} {venue.owner.last_name}</div>
                 <div className="detail-header-rentals">
                     <div className="header-stars">
                         {[...Array(venue.rating)].map((_, index) =>
-                        <FontAwesomeIcon key={index} icon={faStarSharp} /> )}</div>
+                        <FontAwesomeIcon key={index} icon={faStarSharp} /> )}
+                    </div>
+                    <div className="text-standard-14 text-align-Right italic">Rented 3 times this month</div>
                 </div>
             </div>
             <div className="detail-body">
@@ -97,81 +99,91 @@ export default function Venue () {
                     <div key={index} className="text-title-24-border">{type.environment} {type.type}</div>)}
                     <div className="detail-body-container">
                         <div className="text-standard-14">Venue description goes here. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio perferendis asperiores explicabo corrupti! Atque est, consequatur doloremque aut maxime ipsa aliquid consequuntur asperiores molestiae aspernatur facere molestias suscipit, exercitationem rerum.</div>
+                        <div className="spacer-5"></div>
                         <div className="detail-body-bubbles">
                             <div className="text-bubble-black">Impressive sound system</div>
                             <div className="text-bubble-black">Festive atmosphere</div>
-                            <div className="text-bubble-black">Highly rated by event hosts</div>
+                            <div className="text-bubble-black">High rating</div>
                         </div>
                         <div className="detail-body-bubbles">
-                            <div className="text-bubble-white">College reunion</div>
                             <div className="text-bubble-white">Wedding</div>
                             <div className="text-bubble-white">Gala</div>
+                            <div className="text-bubble-white">College reunion</div>
                         </div>
                     </div>
             </div>
             <div className="text-title-20-border">The Space</div>
             <div className="detail-body-container">
                 <div className="text-body-split">
-                    <div className="text-standard-14" itemID="text-align-Right">
-                        <div>Space:</div>
-                        <div>Capacity:</div>
-                        <div>Handicap Accessible:</div>
-                        <div>Amenities</div>
+                    <div className="split-right text-standard-14 text-align-Right">
+                        <div className="split-list-text">Space:</div>
+                        <div className="split-list-text">Capacity:</div>
+                        <div className="split-list-text">Handicap Accessible:</div>
+                        <div className="split-list-text">Amenities</div>
                     </div>
-                    <div className="text-standard-14" itemID="text-align-Left">
+                    <div className="split-left text-standard-14 text-align-Left">
                         {venue.type.map(type => 
-                            <div key={type._id}>
+                            <div className="split-list-text" key={type._id}>
                                 {type.environment} {type.type}
                             </div>)}
-                        <div>{venue.max_ppl} people</div>
-                        <div><FontAwesomeIcon icon={faCheck} /></div>
-                        <div><FontAwesomeIcon icon={faWifi} /> Wifi<br /><FontAwesomeIcon icon={faRestroom} /> Restrooms</div>
+                        <div className="split-list-text">{venue.max_ppl} people</div>
+                        <div className="split-list-text"><FontAwesomeIcon icon={faCheck} /></div>
+                        <div className="split-list-text"><FontAwesomeIcon icon={faWifi} />  Wifi</div>
+                        <div className="split-list-text"><FontAwesomeIcon icon={faRestroom} />  Restrooms</div>
                     </div>
                 </div>
             </div>
             <div className="text-title-20-border">Special Features</div>
             <div className="detail-body-container">
-                <div className="text-standard-14 flexgrid-list">
-                    <div><FontAwesomeIcon icon={faSpeakers} /> Sound system</div>
-                    <div><FontAwesomeIcon icon={faRecordVinyl} /> Record player</div>
-                    <div><FontAwesomeIcon icon={faMicrophoneStand} /> Microphones and microphone stands</div>
-                    <div><FontAwesomeIcon icon={faFireplace} /> Fireplace</div>
+                <div className="text-body-split">
+                    <div className="split-right text-standard-14 text-align-Left">
+                        <div className="split-list-icon-set">
+                            <FontAwesomeIcon icon={faSpeakers} />
+                            <div split-list-text>Sound System</div>
+                        </div>
+                        
+                        <div split-list-text><FontAwesomeIcon icon={faRecordVinyl} />  Record Player</div>
+                    </div>
+                    <div className="split-left text-standard-14 text-align-Left">
+                        <div split-list-text><FontAwesomeIcon icon={faMicrophoneStand} />  Microphones & Stands</div>
+                        <div split-list-text><FontAwesomeIcon icon={faFireplace} />  Fireplace</div>
+                    </div>
                 </div>
             </div>
             <div className="text-title-20-border">Rental Requirements</div>
             <div className="detail-body-container">
                 <div className="text-body-split">
-                    <div className="text-standard-14 text-align-Right">
-                        <div>Minimum Rental Period:</div>
-                        <div>Average Cost:</div>
+                    <div className="split-right text-standard-14 text-align-Right">
+                        <div split-list-text>Minimum Rental Period:</div>
+                        <div split-list-text>Average Cost:</div>
                     </div>
-                    <div className="text-standard-14 text-align-Left">
-                        <div>3 hours</div>
-                        <div>${venue.price} / hour</div>
+                    <div className="split-left text-standard-14 text-align-Left">
+                        <div split-list-text>3 hours</div>
+                        <div split-list-text>${venue.price} / hour</div>
                     </div>
                 </div>
                 <div className="detail-venue-booking-container">
                     <div className="detail-venue-booking" onClick={showBooking} >book venue</div>
                 </div>
                 <div className="icon-click-boxes">
-                    <div className="icon-click-box">
-                        <div><FontAwesomeIcon icon={faCalendarXmark} /></div>
-                        <div className="text-standard-14" onClick={showRules}>Venue Rules</div>
-                        <div onClick={showRules}>{ rules ? <FontAwesomeIcon icon={faAnglesUp} /> : <FontAwesomeIcon icon={faAnglesDown} /> }</div>
+                    <div className="icon-click-box margin-right">
+                        <div className="text-standard-16"><FontAwesomeIcon icon={faCalendarXmark} /></div>
+                        <div className="text-standard-14 text-align-Center spacer-5" onClick={showRules}>Venue Rules</div>
+                        <div className="text-standard-12" onClick={showRules}>{ rules ? <FontAwesomeIcon icon={faAnglesUp} /> : <FontAwesomeIcon icon={faAnglesDown} /> }</div>
                         { rules ? 
                         <div className="rules-list">
-                            <FontAwesomeIcon icon={faBan} /> Drug Use
-                            <FontAwesomeIcon icon={faBan} /> Smoking
+                            <div className="text-standard-14 spacer-5"><FontAwesomeIcon icon={faBan} /> Drug Use</div>
+                            <div className="text-standard-14 spacer-5"><FontAwesomeIcon icon={faBan} /> Smoking</div>
                         </div> : null}
                     </div>
-                    <div className="icon-click-box">
-                        <div><FontAwesomeIcon icon={faCalendarXmark} /></div>
+                    <div className="icon-click-box margin-left text-standard-14">
+                        <div className="text-standard-16"><FontAwesomeIcon icon={faCalendarXmark} /></div>
                         {/* <div className="text-standard-14">Cancellation Policy</div> */}
-                        <div className="text-standard-14" onClick={showCancel}>Cancellation Policy</div>
-                        <div onClick={showCancel}>{ cancel ? <FontAwesomeIcon icon={faAnglesUp} /> : <FontAwesomeIcon icon={faAnglesDown} /> }</div>
+                        <div className="text-standard-14 text-align-Center spacer-5" onClick={showCancel}>Cancellation Policy</div>
+                        <div className="text-standard-12" onClick={showCancel}>{ cancel ? <FontAwesomeIcon icon={faAnglesUp} /> : <FontAwesomeIcon icon={faAnglesDown} /> }</div>
                         { cancel ? 
                         <div className="cancel-list">
-                            <div>Cancellations may be made up to 48 hours before the start of the booking. Any cancellations made between 48 and 24 hours before the start of the booking will be charged 50% of the booking fee and any cancellation made under 24 hours' notice will be charged the full booking fee.</div>
+                            <div className="text-standard-12 text-align-Justify">Cancellations may be made up to 48 hours before the start of the booking. Any cancellations made between 48 and 24 hours before the start of the booking will be charged 50% of the booking fee and any cancellation made under 24 hours' notice will be charged the full booking fee.</div>
                         </div> : null}
                     </div>
                 </div>
