@@ -92,10 +92,10 @@ export default function Venue () {
                         <FontAwesomeIcon key={index} icon={faStarSharp} /> )}</div>
                 </div>
             </div>
-            <div className="detail-body-container">
+            <div className="detail-body">
                 { venue.type.map((type, index) => 
                     <div key={index} className="text-title-24-border">{type.environment} {type.type}</div>)}
-                    <div className="detail-body-text-container">
+                    <div className="detail-body-container">
                         <div className="text-standard-14">Venue description goes here. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio perferendis asperiores explicabo corrupti! Atque est, consequatur doloremque aut maxime ipsa aliquid consequuntur asperiores molestiae aspernatur facere molestias suscipit, exercitationem rerum.</div>
                         <div className="detail-body-bubbles">
                             <div className="text-bubble-black">Impressive sound system</div>
@@ -109,8 +109,8 @@ export default function Venue () {
                         </div>
                     </div>
             </div>
+            <div className="text-title-20-border">The Space</div>
             <div className="detail-body-container">
-                <div className="text-title-20-border">The Space</div>
                 <div className="text-body-split">
                     <div className="text-standard-14" itemID="text-align-Right">
                         <div>Space:</div>
@@ -129,8 +129,8 @@ export default function Venue () {
                     </div>
                 </div>
             </div>
+            <div className="text-title-20-border">Special Features</div>
             <div className="detail-body-container">
-                <div className="text-title-20-border">Special Features</div>
                 <div className="text-standard-14 flexgrid-list">
                     <div><FontAwesomeIcon icon={faSpeakers} /> Sound system</div>
                     <div><FontAwesomeIcon icon={faRecordVinyl} /> Record player</div>
@@ -138,8 +138,8 @@ export default function Venue () {
                     <div><FontAwesomeIcon icon={faFireplace} /> Fireplace</div>
                 </div>
             </div>
+            <div className="text-title-20-border">Rental Requirements</div>
             <div className="detail-body-container">
-                <div className="text-title-20-border">Rental Requirements</div>
                 <div className="text-body-split">
                     <div className="text-standard-14 text-align-Right">
                         <div>Minimum Rental Period:</div>
@@ -176,8 +176,8 @@ export default function Venue () {
                     </div>
                 </div>
             </div>
+            <div className="text-title-20-border">Similar Venues</div>
             <div className="detail-body-container">
-                <div className="text-title-20-border">Similar Venues</div>
                 <div className="search-list-grid">
                     { similar.length > 0 ? similar.map((result, index) => 
                     <div className="search-list-card" key={index}>
