@@ -71,9 +71,10 @@ export default function Venue () {
     if (venue) {
     return (
         <div className="venue-detail-page">
-            {/* <VenueCarousel/> */}
+         
             
             <div className="detail-header-container">
+            <VenueCarousel/>
                 <div className="text-title-32">{venue.name}</div>
                 <FontAwesomeIcon icon={faShareFromSquare} />
                 { liked ? <FontAwesomeIcon icon={Liked} onClick={handleLike} /> : <FontAwesomeIcon icon={Unliked} onClick={handleLike} /> }

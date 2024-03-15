@@ -25,27 +25,24 @@
 }
 
 .VenueGalleryContainer{
-    width: 100%;
+    width: 1000px;
     height: 35vmax;
     margin-top: 5%;
+    margin-left: 40px;
     
 }
 .img-wrapper-Venue{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: auto;
+   width: 400px;
+    height: 600px
     
 }
 .Venuegalleryimg{
     margin-left: 5%;
     margin-top: 10%;
-    width: 30vmax;
+    width:35vmax;
     height: 20vmax;
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
-    max-width: 100%; 
-    max-height: 100%;
+   
 }
 .Venuegalleryimg:hover{
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
