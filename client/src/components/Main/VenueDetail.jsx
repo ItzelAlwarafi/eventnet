@@ -73,8 +73,9 @@ export default function Venue () {
     if (venue) {
     return (
         <div className="venue-detail-page">
-            {/* <VenueCarousel/> */}
-            
+            <div className="detail-carousel-container">
+                <VenueCarousel/>
+            </div>
             <div className="detail-header-container">
                 <div className="detail-header-primary">
                     <div className="text-title-32">{venue.name}</div>
@@ -119,7 +120,7 @@ export default function Venue () {
                         <div className="split-list-text">Space:</div>
                         <div className="split-list-text">Capacity:</div>
                         <div className="split-list-text">Handicap Accessible:</div>
-                        <div className="split-list-text">Amenities</div>
+                        <div className="split-list-text">Amenities:</div>
                     </div>
                     <div className="split-left text-standard-14 text-align-Left">
                         {venue.type.map(type => 
@@ -128,8 +129,14 @@ export default function Venue () {
                             </div>)}
                         <div className="split-list-text">{venue.max_ppl} people</div>
                         <div className="split-list-text"><FontAwesomeIcon icon={faCheck} /></div>
-                        <div className="split-list-text"><FontAwesomeIcon icon={faWifi} />  Wifi</div>
-                        <div className="split-list-text"><FontAwesomeIcon icon={faRestroom} />  Restrooms</div>
+                        <div className="list-icon-set">
+                            <div className="icon-margin-right"><FontAwesomeIcon icon={faWifi} /></div>
+                            <div className="split-list-text">Wifi</div>
+                        </div>
+                        <div className="list-icon-set">
+                            <div className="icon-margin-right"><FontAwesomeIcon icon={faRestroom} /></div>
+                            <div className="split-list-text">Restrooms</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -137,16 +144,24 @@ export default function Venue () {
             <div className="detail-body-container">
                 <div className="text-body-split">
                     <div className="split-right text-standard-14 text-align-Left">
-                        <div className="split-list-icon-set">
-                            <FontAwesomeIcon icon={faSpeakers} />
-                            <div split-list-text>Sound System</div>
+                        <div className="list-icon-set">
+                            <FontAwesomeIcon className="icon-margin-right" icon={faSpeakers} />
+                            <div className="split-list-text">Sound System</div>
                         </div>
-                        
-                        <div split-list-text><FontAwesomeIcon icon={faRecordVinyl} />  Record Player</div>
+                        <div className="list-icon-set">
+                            <FontAwesomeIcon className="icon-margin-right" icon={faRecordVinyl} />
+                            <div className="split-list-text">Record Player</div>
+                        </div>
                     </div>
                     <div className="split-left text-standard-14 text-align-Left">
-                        <div split-list-text><FontAwesomeIcon icon={faMicrophoneStand} />  Microphones & Stands</div>
-                        <div split-list-text><FontAwesomeIcon icon={faFireplace} />  Fireplace</div>
+                        <div className="list-icon-set">
+                            <FontAwesomeIcon className="icon-margin-right" icon={faMicrophoneStand} />
+                            <div className="split-list-text">Microphones</div>
+                        </div>
+                        <div className="list-icon-set">
+                            <FontAwesomeIcon className="icon-margin-right" icon={faFireplace} />
+                            <div className="split-list-text">Fireplace</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -189,17 +204,17 @@ export default function Venue () {
                 </div>
             </div>
             <div className="text-title-20-border">Similar Venues</div>
-            <div className="detail-body-container">
+            <div className="similar-body-container">
                 <div className="search-list-grid">
                     { similar.length > 0 ? similar.map((result, index) => 
-                    <div className="search-list-card" key={index}>
-                        <div className="location-list-card-image-container">
+                    <div className="similar-list-card" key={index}>
+                        <div className="similar-list-card-image-container">
                             <img className="location-list-card-image" src={result.img[0]}/>
                         </div>
                         <div className="location-list-split">
                             <div className="location-list-info">
                                 <div className="location-list-info-primary">
-                                    <div className="text-title-24">{result.name}</div>
+                                    <div className="text-title-22">{result.name}</div>
                                     <div className="text-caps-14">{result.location.city}, {result.location.state}, {result.location.country}</div>
                                     <div className="text-standard-14">{result.type.environment} {result.type.type}</div>
                                 </div>
@@ -215,7 +230,10 @@ export default function Venue () {
                 </div>
                 
             </div>
-            <button className="detail-button-back">back</button>
+            <div className="detail-button-back-container">
+                <div className="detail-button-back">back</div>
+            </div>
+            
         </div>
     ) } else { return <div className="loading">Loading...</div> }
 }
