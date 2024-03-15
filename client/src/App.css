@@ -1,6 +1,7 @@
 body {
   width: 100vw;
   display: block;
+  font-family: "Roboto";
 }
 
 .BookContainer,.selectdiv {
@@ -451,7 +452,7 @@ form ~ .valid {
   margin-right: 20px;
 }
 
-.venue-detail-page, .spacetype-list-page, .location-list-page, .venue-list-page, .BookContainer {
+.venue-detail-page, .spacetype-list-page, .location-list-page, .venue-list-page, .BookContainer, .owned-venues-page, .favourtied-venues-page, .add-venue-page {
   position: relative;
   top: 7rem;
   z-index: 0;
@@ -662,6 +663,10 @@ form ~ .valid {
 .italic {
   font-style: italic;
 }
+.anti-link {
+  text-decoration: none;
+  color: black;
+}
 .flexgrid-list {
   display: flex;
   flex-direction: row;
@@ -736,6 +741,42 @@ form ~ .valid {
   align-self: center;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.owned-edit-button-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.owned-edit-button {
+  font-family: "Roboto";
+  color: white;
+  background: linear-gradient(145deg, #102146, #2b457d, #6083cf);
+  width: 100px;
+  border-radius: 20px;
+  text-align: center;
+  padding: 10px 0px;
+
+  align-self: center;
+}
+.owned-register-new-button {
+  font-family: "Roboto";
+  color: white;
+  background-color: black;
+  width: 200px;
+  border-radius: 20px;
+  text-align: center;
+  padding: 10px 0px;
+
+  align-self: center;
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+.owned-register-new-button-text {
+  font-family: "Roboto";
+  font-size: 16px;
+  color: white;
+  text-decoration: none;
 }
 
 .list-card-button-explore {

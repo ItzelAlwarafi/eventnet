@@ -80,8 +80,8 @@ export default function AddVenue () {
 
     if (types && locations) {
         return (
-            <div>
-                <h1>Register your venue!</h1>
+            <div className="add-venue-page">
+                <div className="text-title-24">Register your venue!</div>
 
                 <form className='add-venue' onSubmit={handleSubmit} >
                     <label htmlFor='name'>Name of venue:</label>

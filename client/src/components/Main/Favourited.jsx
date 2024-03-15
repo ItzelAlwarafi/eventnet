@@ -13,7 +13,7 @@ export default function Favourited () {
     }
 
     return(
-        <div>
+        <div className="favourited-venues-page">
             { venues.length === 0 ? 
                 <p>No venues favourited</p> :
                 venues.map(venue => (
