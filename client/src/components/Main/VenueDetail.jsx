@@ -27,7 +27,7 @@ export default function Venue () {
             setVenue(response.data)
         }
         getVenues()
-    }, [])
+    }, [venue])
 
     useEffect(() => {
         if (venue) {
