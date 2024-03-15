@@ -52,7 +52,7 @@ export default function LocationDetails () {
                             <div className="location-list-split">
                                 <div className="location-list-info">
                                     <div className="location-list-info-primary">
-                                        <div className="text-title-28" onClick={() => showVenue(venue._id)}>{venue.name }</div>
+                                        <div className="text-title-24" onClick={() => showVenue(venue._id)}>{venue.name }</div>
                                         { venue.type.map(type =>
                                             <div className="text-caps-16" key={type._id}>{type.environment} {type.type}</div>
                                         )}

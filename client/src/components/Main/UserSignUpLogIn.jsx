@@ -188,7 +188,7 @@ const matchPasswords = ()=> {
           </form>
            {logInMessage}
            
-            <p>Don't Have and account yet ? </p>
+            <p>Don't have an account yet? </p>
             <button className='SignUpBtn' onClick={() => { setShowSignUp(true); setFormState(formInitialState);setLogInMessage('') }}>Sign Up Here</button>
 
         </div>
