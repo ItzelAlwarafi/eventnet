@@ -593,6 +593,10 @@ form ~ .valid {
 .search-link-text{
   color: black
 }
+.text-title-22 {
+  font-family: "Bebas Neue";
+  font-size: 22px;
+}
 .text-title-20 {
   font-family: "Bebas Neue";
   font-size: 20px;
@@ -638,10 +642,15 @@ form ~ .valid {
 .split-list-text {
   margin-bottom: 5px;
 }
-.split-list-icon-set {
+.icon-margin-right {
+  margin-right: 10px;
+}
+.list-icon-set {
   display: flex;
   flex-direction: row;
+  justify-content: start;
   min-width: 100px;
+  margin-right: 10px;
 }
 
 .text-align-Right {
@@ -692,6 +701,13 @@ form ~ .valid {
   width: 200px
 }
 
+.similar-body-container {
+  margin-top: 10px;
+}
+.similar-list-card {
+  margin-bottom: 15px;
+}
+
 .detail-header-container {
   margin-left: 10%;
   margin-right: 10%;
@@ -710,10 +726,24 @@ form ~ .valid {
   font-size: 20px;
   width: 60px;
 }
+.detail-button-back-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
 .detail-button-back {
   font-family: "Roboto";
   color: white;
-  background-color: black;
+  background: linear-gradient(145deg, #102146, #2b457d, #6083cf);
+  width: 100px;
+  border-radius: 20px;
+  text-align: center;
+  padding: 10px 10px;
+
+  align-self: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .detail-venue-booking-container {
   display: flex;
@@ -724,7 +754,7 @@ form ~ .valid {
 .detail-venue-booking {
   font-family: "Roboto";
   color: white;
-  background-color: black;
+  background: linear-gradient(145deg, #102146, #2b457d, #6083cf);
   width: 100px;
   border-radius: 20px;
   text-align: center;
