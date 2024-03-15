@@ -9,7 +9,6 @@ export default function SearchBar () {
 
   const handleSearch = async() => {
     const response = await axios.get(`http://localhost:3001/search/${searchTerm}`)
-    console.log(response)
     setResults(response.data)
   }
 
@@ -18,6 +17,8 @@ export default function SearchBar () {
       handleSearch()
     }
   }
+
+  const removeSearch = () => setResults([])
 
   return (
     <div className="searchbar">
@@ -35,7 +36,7 @@ export default function SearchBar () {
           <img className="searchbar-result-card-image-containter">
             {/* <img className="searchbar-result-card-image" src={result.img[0]} /> */}
           </img>
-          <Link to={`/venues/${result._id}`} className="text-title-24">{result.name}</Link>
+          <Link to={`/venues/${result._id}`} className="text-title-24" onClick={removeSearch}>{result.name}</Link>
         </div>
         )}
 
