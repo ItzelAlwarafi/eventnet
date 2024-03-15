@@ -16,7 +16,13 @@ Venue owners will be able to easily list and edit their venues on the app. They 
 
 Our app is a mobile-first design, emphasising pictures of venues to give event hosters a proper feel of venues.
 
-[Screenshot of wireframes]
+![Wireframe](./planning/Wireframe1.png)
+
+![Wireframe](./planning/Wireframe2.png)
+
+![Wireframe](./planning/Wireframe3.png)
+
+![Wireframe](./planning/Wireframe4.png)
 
 #### Components
 
