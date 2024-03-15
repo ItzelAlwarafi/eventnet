@@ -18,13 +18,13 @@ export default function UserSidebar ({toggleUser}) {
                 {/* <div className="account-menu-title">welcome</div> */}
                 <a className="account-menu-header-placeholder">O</a>
             </div>
-            <div className="account-menu-title">welcome</div>
+            <div className="account-menu-title text-align-Center">welcome</div>
             <div className="account-user-image">
                 <FontAwesomeIcon className="account-user-image-icon" icon={faUser} />
             </div>
             <div className="account-info-basic">
                 <div className="account-info-fullname">{user[0].first_name} {user[0].last_name}</div>
-                <div className="account-info-username">{user[0].username}</div>
+                <div className="account-info-username">@{user[0].username}</div>
             </div>
             <div className="account-stats">
                 <div className="account-stat-card">
