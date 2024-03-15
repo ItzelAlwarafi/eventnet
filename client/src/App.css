@@ -452,7 +452,7 @@ form ~ .valid {
   margin-right: 20px;
 }
 
-.venue-detail-page, .spacetype-list-page, .location-list-page, .venue-list-page, .BookContainer, .owned-venues-page, .favourtied-venues-page, .add-venue-page {
+.venue-detail-page, .spacetype-list-page, .location-list-page, .venue-list-page, .BookContainer, .owned-venues-page, .favourtied-venues-page, .add-venue-page, .home-page {
   position: relative;
   top: 7rem;
   z-index: 0;
@@ -674,6 +674,23 @@ form ~ .valid {
   justify-content: space-around;
   flex-wrap: wrap;
   width: 200px
+}
+
+.home-text-welcome {
+  font-family: "Ruslan Display";
+  font-size: 16px;
+}
+.home-text-venyou {
+  font-family: "Ruslan Display";
+  font-size: 60px;
+}
+.home-text-container {
+  margin-bottom: 20px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.tagline-text-container {
+  margin-bottom: 15px;
 }
 
 .similar-body-container {
