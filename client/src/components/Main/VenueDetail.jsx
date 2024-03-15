@@ -19,6 +19,7 @@ export default function Venue () {
     const {loggedIn} = useContext(userContext)
     const [similar, setSimilar] = useState([])
     const [rules, toggleRules] = useState(false)
+    const [cancel, toggleCancel] = useState(false)
 
     useEffect(() => {
         const getVenues = async() => {
@@ -26,7 +27,7 @@ export default function Venue () {
             setVenue(response.data)
         }
         getVenues()
-    }, [])
+    }, [venue])
 
     useEffect(() => {
         if (venue) {
@@ -67,6 +68,7 @@ export default function Venue () {
     }
 
     const showRules = () => toggleRules(!rules)
+    const showCancel = () => toggleCancel(!cancel)
 
     if (venue) {
     return (
@@ -74,9 +76,13 @@ export default function Venue () {
             {/* <VenueCarousel/> */}
             
             <div className="detail-header-container">
-                <div className="text-title-32">{venue.name}</div>
-                <FontAwesomeIcon icon={faShareFromSquare} />
-                { liked ? <FontAwesomeIcon icon={Liked} onClick={handleLike} /> : <FontAwesomeIcon icon={Unliked} onClick={handleLike} /> }
+                <div className="detail-header-primary">
+                    <div className="text-title-32">{venue.name}</div>
+                    <div className="header-interaction-icons">
+                        <FontAwesomeIcon icon={faShareFromSquare} />
+                        { liked ? <FontAwesomeIcon icon={Liked} onClick={handleLike} /> : <FontAwesomeIcon icon={Unliked} onClick={handleLike} /> }
+                    </div>
+                </div>
                 <div className="text-caps-16">{venue.location.city}, {venue.location.state}, {venue.location.country}</div>
                 <div className="text-standard-14">{venue.street_address}</div>
                 <div className="text-standard-12">Hosted by {venue.owner.first_name ? venue.owner.first_name  : null} {venue.owner.last_name}</div>
@@ -86,23 +92,25 @@ export default function Venue () {
                         <FontAwesomeIcon key={index} icon={faStarSharp} /> )}</div>
                 </div>
             </div>
-            <div className="detail-body-container">
+            <div className="detail-body">
                 { venue.type.map((type, index) => 
                     <div key={index} className="text-title-24-border">{type.environment} {type.type}</div>)}
-                <div className="text-standard-14">Venue description goes here. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio perferendis asperiores explicabo corrupti! Atque est, consequatur doloremque aut maxime ipsa aliquid consequuntur asperiores molestiae aspernatur facere molestias suscipit, exercitationem rerum.</div>
-                <div className="detail-body-bubbles">
-                    <div className="text-bubble-black">Impressive sound system</div>
-                    <div className="text-bubble-black">Festive atmosphere</div>
-                    <div className="text-bubble-black">Highly rated by event hosts</div>
-                </div>
-                <div className="detail-body-bubbles">
-                    <div className="text-bubble-white">College reunion</div>
-                    <div className="text-bubble-white">Wedding</div>
-                    <div className="text-bubble-white">Gala</div>
-                </div>
+                    <div className="detail-body-container">
+                        <div className="text-standard-14">Venue description goes here. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio perferendis asperiores explicabo corrupti! Atque est, consequatur doloremque aut maxime ipsa aliquid consequuntur asperiores molestiae aspernatur facere molestias suscipit, exercitationem rerum.</div>
+                        <div className="detail-body-bubbles">
+                            <div className="text-bubble-black">Impressive sound system</div>
+                            <div className="text-bubble-black">Festive atmosphere</div>
+                            <div className="text-bubble-black">Highly rated by event hosts</div>
+                        </div>
+                        <div className="detail-body-bubbles">
+                            <div className="text-bubble-white">College reunion</div>
+                            <div className="text-bubble-white">Wedding</div>
+                            <div className="text-bubble-white">Gala</div>
+                        </div>
+                    </div>
             </div>
+            <div className="text-title-20-border">The Space</div>
             <div className="detail-body-container">
-                <div className="text-title-20-border">The Space</div>
                 <div className="text-body-split">
                     <div className="text-standard-14" itemID="text-align-Right">
                         <div>Space:</div>
@@ -121,58 +129,81 @@ export default function Venue () {
                     </div>
                 </div>
             </div>
+            <div className="text-title-20-border">Special Features</div>
             <div className="detail-body-container">
-                <div className="text-title-20-border">Special Features</div>
-                <div className="text-standard-14" itemID="flexgrid-list">
+                <div className="text-standard-14 flexgrid-list">
                     <div><FontAwesomeIcon icon={faSpeakers} /> Sound system</div>
                     <div><FontAwesomeIcon icon={faRecordVinyl} /> Record player</div>
                     <div><FontAwesomeIcon icon={faMicrophoneStand} /> Microphones and microphone stands</div>
                     <div><FontAwesomeIcon icon={faFireplace} /> Fireplace</div>
                 </div>
             </div>
+            <div className="text-title-20-border">Rental Requirements</div>
             <div className="detail-body-container">
-                <div className="text-title-20-border">Rental Requirements</div>
                 <div className="text-body-split">
-                    <div className="text-standard-14" itemID="text-align-Right">
+                    <div className="text-standard-14 text-align-Right">
                         <div>Minimum Rental Period:</div>
                         <div>Average Cost:</div>
                     </div>
-                    <div className="text-standard-14" itemID="text-align-Left">
+                    <div className="text-standard-14 text-align-Left">
                         <div>3 hours</div>
                         <div>${venue.price} / hour</div>
                     </div>
                 </div>
-                <div className="detail-venue-booking" onClick={showBooking} >Book venue</div>
-                <div className="text-standard-14" itemID="flexgrid-list">
+                <div className="detail-venue-booking-container">
+                    <div className="detail-venue-booking" onClick={showBooking} >book venue</div>
+                </div>
+                <div className="icon-click-boxes">
                     <div className="icon-click-box">
-                        <div onClick={showRules}>{ rules ? <FontAwesomeIcon icon={faAnglesUp} /> : <FontAwesomeIcon icon={faAnglesDown} /> }</div>
+                        <div><FontAwesomeIcon icon={faCalendarXmark} /></div>
                         <div className="text-standard-14" onClick={showRules}>Venue Rules</div>
+                        <div onClick={showRules}>{ rules ? <FontAwesomeIcon icon={faAnglesUp} /> : <FontAwesomeIcon icon={faAnglesDown} /> }</div>
                         { rules ? 
-                        <div>
-                            <FontAwesomeIcon icon={faBan} /> Drug use
+                        <div className="rules-list">
+                            <FontAwesomeIcon icon={faBan} /> Drug Use
                             <FontAwesomeIcon icon={faBan} /> Smoking
                         </div> : null}
                     </div>
                     <div className="icon-click-box">
                         <div><FontAwesomeIcon icon={faCalendarXmark} /></div>
-                        <div className="text-standard-14">Cancellation Policy</div>
-                        <div>Cancellations may be made up to 48 hours before the start of the booking. Any cancellations made between 48 and 24 hours before the start of the booking will be charged 50% of the booking fee and any cancellation made under 24 hours' notice will be charged the full booking fee.</div>
+                        {/* <div className="text-standard-14">Cancellation Policy</div> */}
+                        <div className="text-standard-14" onClick={showCancel}>Cancellation Policy</div>
+                        <div onClick={showCancel}>{ cancel ? <FontAwesomeIcon icon={faAnglesUp} /> : <FontAwesomeIcon icon={faAnglesDown} /> }</div>
+                        { cancel ? 
+                        <div className="cancel-list">
+                            <div>Cancellations may be made up to 48 hours before the start of the booking. Any cancellations made between 48 and 24 hours before the start of the booking will be charged 50% of the booking fee and any cancellation made under 24 hours' notice will be charged the full booking fee.</div>
+                        </div> : null}
                     </div>
                 </div>
             </div>
+            <div className="text-title-20-border">Similar Venues</div>
             <div className="detail-body-container">
-                <div className="text-title-20-border">Similar Venues</div>
-                { similar.length > 0 ? similar.map((result, index) => 
-                <div key={index}>
-                    <img src={result.img[0]} />
-                    <div>{result.name}</div>
-                    <div>{result.location.city}, {result.location.state}, {result.location.country}</div>
-                    <div>{result.type.environment} {result.type.type}</div>
-                </div>) : 'There are no similar venues.'}
-                <div className="text-standard-14">Carousel here</div>
-                {/* import component for this? */}
+                <div className="search-list-grid">
+                    { similar.length > 0 ? similar.map((result, index) => 
+                    <div className="search-list-card" key={index}>
+                        <div className="location-list-card-image-container">
+                            <img className="location-list-card-image" src={result.img[0]}/>
+                        </div>
+                        <div className="location-list-split">
+                            <div className="location-list-info">
+                                <div className="location-list-info-primary">
+                                    <div className="text-title-24">{result.name}</div>
+                                    <div className="text-caps-14">{result.location.city}, {result.location.state}, {result.location.country}</div>
+                                    <div className="text-standard-14">{result.type.environment} {result.type.type}</div>
+                                </div>
+                            </div>
+                            <div className="list-card-button-container">
+                                <div className="list-card-button-explore">explore</div>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>) : 'There are no similar venues.'}
+                    {/* Possible carousel for similar venues */}
+                </div>
+                
             </div>
-            <button className="detail-button-back">back to search</button>
+            <button className="detail-button-back">back</button>
         </div>
     ) } else { return <div className="loading">Loading...</div> }
 }
