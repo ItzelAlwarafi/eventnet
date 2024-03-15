@@ -290,7 +290,7 @@ form ~ .valid {
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 
 .header-primary {
-  width: 100%;
+  width: 96%;
   height: 3.5rem;
   background-color: black;
   display: flex;
@@ -942,7 +942,7 @@ form ~ .valid {
 
 .footer {
   background-color: #f0efef;
-  width: 100vw;
+  width: 91%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

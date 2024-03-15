@@ -18,7 +18,7 @@ function App() {
 const [user, setUser] = useState([])
 
   return (
-    <div>
+    <div className='page-wrapper'>
        <userContext.Provider value={{userType,setUserType,loggedIn,setLoggedIn,user, setUser}}>
       <Header />
       <Main />

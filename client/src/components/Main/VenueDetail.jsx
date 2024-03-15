@@ -27,7 +27,7 @@ export default function Venue () {
             setVenue(response.data)
         }
         getVenues()
-    }, [venue])
+    }, [])
 
     useEffect(() => {
         if (venue) {
@@ -76,7 +76,6 @@ export default function Venue () {
                 <VenueCarousel/>
             <div className="detail-header-container">
                 <div className="detail-header-primary">
-                    <VenueCarousel/>
                     <div className="text-title-32">{venue.name}</div>
                     <div className="header-interaction-icons">
                         <FontAwesomeIcon icon={faShareFromSquare} />
