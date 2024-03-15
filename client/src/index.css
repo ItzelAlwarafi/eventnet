@@ -57,7 +57,11 @@
     bottom: 0;
     overflow-x: hidden;
     z-index: 1000;
-    background: linear-gradient(135deg, #060606, #1c1c1c, #706d6d, #ffffff)
+    background: linear-gradient(135deg, #060606, #141414, #3a3a3a, #b8b8b8);
+
+    width: 75%;
+    display: flex;
+    flex-direction: column;
 }
 
 .sidenav > ul{
@@ -71,7 +75,7 @@
 .Side-link{
     display: flex;
     justify-content: space-between;
-    margin: 20px;
+    margin: 15px;
     text-decoration: none;
     color:white
 }

@@ -73,7 +73,7 @@ export default function Account () {
     }
 
     return (
-        <div>
+        <div className="account-page">
             <h1>{user[0].first_name ? user[0].first_name : user[0].last_name}'s Account</h1>
             <button type='button' onClick={handleEdit} >Edit</button>
             { editMode ? <button type='button' onClick={cancelEdit} >Cancel</button> : null}

@@ -20,20 +20,22 @@ export default function SearchBar () {
   }
 
   return (
-    <div className='dropdown'>
-      <input
+    <div className="searchbar">
+      <input className="searchbar-placeholder-text"
         type="text"
-        placeholder="Search venue"
+        placeholder="search venue"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         onKeyDown={handleKeydown} 
       />
 
-      <div className='dropdown-content'>
+      <div className="searchbar-result-dropdown">
         {results.map((result, index) =>
-        <div key={index}>
-          <img src={result.img[0]} />
-          <Link to={`/venues/${result._id}`}>{result.name}</Link>
+        <div className="searchbar-result-card" key={index}>
+          <img className="searchbar-result-card-image-containter">
+            {/* <img className="searchbar-result-card-image" src={result.img[0]} /> */}
+          </img>
+          <Link to={`/venues/${result._id}`} className="text-title-24">{result.name}</Link>
         </div>
         )}
 

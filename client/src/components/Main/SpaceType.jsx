@@ -24,16 +24,23 @@ export default function SpaceType (props) {
         return <div className="loading">Loading...</div>
     } else {
         return (
-            <div className="spacetype-list-page">
-                <div className="text-title-32">Space Types</div>
+            <div className="location-list-page">
+                <div className="search-list-title">Space Types</div>
                 <div className="search-list-grid">
                     {types.map((type) => (
                         <div className="search-list-card" onClick={() => showType(type)} key={type._id}>
-                            {/* <img src={type.img} alt={type.name} className="list-card-image"/> */}
-                            <div className="text-title-20">{type.type}</div>
-                            <div className="text-standard-16">{type.environment}</div>
-                            <button className="list-card-button-explore">explore</button>
-                            {/* onClick move to list of venues of this space type */}
+                            <div className="list-card-image-container">
+                                <img src={type.image} alt={type.type} className="list-card-image"/>
+                            </div>
+                            <div className="list-card-info">
+                                <div className="list-card-result-info">
+                                    <div className="text-title-28">{type.type}</div>
+                                    <div className="text-caps-16">{type.environment}</div>
+                                </div>
+                                <div className="list-card-button-container">
+                                    <div className="list-card-button-explore">explore</div>
+                                </div>
+                            </div>
                         </div>
                     ))}
                 </div>
