@@ -42,12 +42,18 @@ export default function LogIn () {
       }
 
     return (
-        <div>
-            <form onSubmit={handleLogIn} >
-                <input type='text' id='username' placeholder='username' value={formState.username} onChange={handleChange} required />
-                <input type='password' id='password' placeholder='password' value={formState.password} onChange={handleChange} required />
-                <button type='submit'>Log In</button>
-                { errorMessage !== '' ? errorMessage : null }
+        <div className="login-form">
+            <form className="login-form-form" onSubmit={handleLogIn} >
+                <div className="login-form-format">
+                    <div className="login-form-fields">
+                        <input className="login-input-field" type='text' id='username' placeholder='username' value={formState.username} onChange={handleChange} required />
+                        <input className="login-input-field" type='password' id='password' placeholder='password' value={formState.password} onChange={handleChange} required />
+                    </div>
+                    <button type='submit' className='login-button-submit'>log in</button>
+                </div>
+                <div className="login-error">
+                    { errorMessage !== '' ? errorMessage : null }
+                </div>
             </form>
         </div>
     )

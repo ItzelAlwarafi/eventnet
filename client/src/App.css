@@ -1,3 +1,8 @@
+body {
+  width: 100vw;
+  display: flex;
+}
+
 .BookContainer,.selectdiv {
   display: flex;
   flex-direction: column;
@@ -286,15 +291,17 @@ form ~ .valid {
 
 .header-primary {
   width: 100%;
-  height: 50px;
+  height: 3.5rem;
   background-color: black;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-left: 5%;
-  padding-right: 5%;
+  /* padding-left: 10px;
+  padding-right: 10px; */
 
+  position: fixed;
+  z-index: 100;
 }
 .app-title {
   font-family: 'Ruslan Display';
@@ -305,40 +312,144 @@ form ~ .valid {
   background-color: white;
   padding: 5px 6px;
   border-radius: 100%;
+  z-index: 5000;
+
+  margin-right: 20px;
 }
-/* .sidenav {
-  height: 100%;
-  width: 0;
+.side-menu-button {
+  margin-left: 20px;
+}
+
+.header-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: white;
+  width: 100%;
+  height: 3rem;
+
+  margin-top: 3.5rem;
   position: fixed;
-  z-index: 1050;
-  top: 0;
-  left: 0;
-  background: linear-gradient(-45deg, black, black black, white);
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-  text-align:center;
-}  
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
+  z-index: 50;
+}
+.searchbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10px;
+}
+.searchbar-placeholder-text {
+  font-family: "Roboto";
+  font-size: 20px;
+  width: 300px;
+  border-radius: 20px;
+  border-color: .5px solid black;
+  text-indent: 10px;
+}
+.searchbar-result-dropdown {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+.searchbar-result-card {
 
 }
-.sidenav a:hover{
-  color: #f1f1f1;
+.searchbar-result-card-image-container {
+
 }
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
+.searchbar-result-card-image {
+
+}
+
+.header-login {
+  position: relative;
+  top: 3rem;
+  /* margin-bottom: 20px; */
+
+  /* background-color: black;
+  height: 90px; */
+}
+.header-login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 15px;
+}
+.login-form-format {
+  display: flex;
+  width: 380px;
+}
+.login-form-fields {
+  
+}
+.login-input-field {
+  font-family: "Roboto";
+  font-size: 20px;
+  border: 1px solid black;
+  width: 280px;
+}
+.login-button-submit {
+  font-family: "Roboto";
   color: white;
-} */
+  background: linear-gradient(135deg, #1c1c1c, #706d6d);
+  width: 150px;
+  border-radius: 20px;
+  text-align: center;
+  padding: 10px 0px;
+
+  align-self: center;
+}
+.login-error {
+  margin-top: 10px;
+  color: red;
+}
+
+.sidenav-links {
+  font-family: "Bebas Neue";
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 20px;
+
+  margin-top: 40px;
+}
+.sidenav-header {
+  display: flex;
+  flex-direction: row;
+  /* align-self: center; */
+  justify-content: space-between;
+
+  margin-top: 10px;
+}
+.sidenav-title {
+  font-family: "Ruslan Display";
+  color: white;
+  font-size: 28px;
+
+  align-self: center;
+  margin-top: 5px;
+}
+.sidenav-header-placeholder {
+  margin-left: 20px;
+}
+.sidenav-closebtn {
+  color: white;
+  text-decoration: none;
+  font-size: 40px;
+
+  align-self: end;
+  margin-right: 20px;
+}
 
 
 .loading {
@@ -347,19 +458,37 @@ form ~ .valid {
 }
 
 .venue-detail-page, .spacetype-list-page, .location-list-page, .venue-list-page {
+  position: relative;
+  top: 7rem;
+  z-index: 0;
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin-left: 10%;
-  margin-right: 10%;
+  /* justify-content: center;
+  align-items: center; */
+
+  width: 100%;
+
+  /* margin-left: 10%;
+  margin-right: 10%; */
+  margin-bottom: 100px;
 }
 .search-list-grid {
   display: flex;
-  direction: column;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+
+  margin-bottom: 30px;
 }
 .search-list-card {
-  margin-top: 20px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .detail-body-container {
@@ -370,6 +499,8 @@ form ~ .valid {
 .search-list-title {
   font-family: "Bebas Neue";
   font-size: 32px;
+
+  text-indent: 20px;
 }
 
 .text-title-24-border {
@@ -395,6 +526,10 @@ form ~ .valid {
 .text-title-32 {
   font-family: "Bebas Neue";
   font-size: 32px;
+}
+.text-title-28 {
+  font-family: "Bebas Neue";
+  font-size: 28px;
 }
 .text-title-24 {
   font-family: "Bebas Neue";
@@ -510,14 +645,7 @@ form ~ .valid {
   color: white;
 }
 
-.search-list-grid {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.search-list-card {
-  max-width: 400px;
-}
+
 .list-card-image-container {
   display: flex;
   justify-content: center;
@@ -534,7 +662,7 @@ form ~ .valid {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  max-width: 300px;
+  width: 350px;
   margin-top: 5px;
 }
 .list-card-result-info {
@@ -547,13 +675,98 @@ form ~ .valid {
 }
 
 
+.location-search-results-page {
+  position: relative;
+  top: 6.5rem;
+  z-index: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 100px;
+}
+.location-search-results-header {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  /* Centering not working
+  justify-content: flex-start;
+  align-items: start; */
+}
+.search-list-skyline-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 150px;
+  /* Issues w centering
+  width: 100vw; */
+  width: 450px;
+
+  margin-bottom: 5px;
+}
+.search-list-skyline {
+  min-height: 150px;
+  max-width: 450px;
+  /* height: 100px; */
+}
+.location-list-card-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 350px;
+  width: 350px;
+}
+.location-list-card-image {
+  /* min-height: 200px; */
+  height: 200px;
+  width: 350px;
+  /* height: 100px; */
+}
+.location-list-split {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+  /* align-items: end; */
+  width: 350px;
+
+  margin-top: 10px;
+}
+.location-list-info {
+  /* margin-left: 10px; */
+}
+.location-dropdown-split {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  margin-top: 10px;
+}
+.location-list-info-secondary {
+  margin-left: 20px;
+}
+.location-list-card-dropdown-button-up {
+  font-size: 24px;
+}
+.location-list-card-dropdown-button-down {
+  font-size: 24px;
+  margin-top: 15px;
+}
+
+
+
+
 .footer {
-  background-color: #D9D9D9;
+  background-color: #f0efef;
   width: 100vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  color: white;
+  color: #acabab;
 
   margin-top: 15px;
   padding: 15px;
@@ -561,15 +774,20 @@ form ~ .valid {
   font-family: "Roboto";
   font-size: 12px;
 }
-.footer-company {
+.footer-contact {
   display: flex;
   align-items: center;
 }
 .footer-appname {
   font-family: "Ruslan Display";
-  font-size: 18px;
-  text-align: center;
-  margin-bottom: 5px;
+  font-size: 24px;
+  text-align: right;
+  align-self: end;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+.footer-copyright {
+  align-self: end;
 }
 .footer-social-icons {
   width: 200px;
@@ -583,11 +801,147 @@ form ~ .valid {
   flex-direction: column;
   justify-content: center;
 }
-.footer-support, .footer-support-links {
-  text-align: right;
+.footer-link {
+  color: #acabab;
+  text-decoration: none;
+  text-indent: 15px;
 }
 .footer-support-title, .footer-company-title {
   font-weight: 500;
+  margin-bottom: 5px;
+}
+
+
+.account-menu{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow-x: hidden;
+  z-index: 900;
+  /* background: linear-gradient(-135deg, #1c1c1c, #353535, #706d6d, #ffffff); */
+  background: linear-gradient(-135deg, #040c1d, #102146, #2b457d, #6083cf);
+
+  width: 75%;
+
+  color: white;
+}
+.account-menu > ul{
+  margin-left: -15px;
+  /* margin-top: 30%; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.account-menu-title {
+  font-family: "Ruslan Display";
+  color: white;
+  font-size: 28px;
+
+  align-self: center;
+  margin-top: 10px;
+}
+.account-menu-header-placeholder {
+  margin-right: 20px;
+  color: #040c1d;
+}
+.account-menu-closebtn {
+  color: white;
+  text-decoration: none;
+  font-size: 40px;
+
+  align-self: end;
+  margin-left: 20px;
+}
+.account-user-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+.account-user-image-icon {
+  font-size: 72px;
+  border: 4px solid white;
+  border-radius: 100%;
+  width: 75px;
+  padding: 20px;
+
+  margin: 20px;
+}
+.account-info-basic {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  /* width: 300px; */
+}
+.account-info-fullname {
+  font-family: "Bebas Neue";
+  font-size: 24px;
+  width: 190px;
+  text-wrap: wrap;
+  text-align: center;
+}
+.account-info-username {
+  font-size: 20px;
+  text-align: center;
+  font-family: "Roboto";
+  font-weight: 300;
+  font-size: 20px;
+  font-style: italic;
+}
+.account-stat-card {
+  margin-bottom: 10px;
+}
+.account-stats {
+  font-family: "Roboto";
+  font-weight: 300;
+  font-size: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 40px;
+}
+.account-stats-emphasis {
+  font-family: "Ruslan Display";
+  font-size: 40px;
+  text-align: center;
+}
+.account-links{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+.account-links-divider {
+  background-color: white;
+  width: 150px;
+  height: 1px;
+
+  margin-bottom: 30px;
+}
+.account-link {
+  font-family: "Bebas Neue";
+  font-size: 20px;
+  text-align: center;
+  text-decoration: none;
+  color:white;
+
+  margin: 15px;
+}
+.account-menu-header {
+  display: flex;
+  flex-direction: row;
+  /* align-self: center; */
+  justify-content: space-between;
+
+  margin-top: 10px;
 }
 
 

@@ -27,13 +27,18 @@ const Header = () => {
                 <div className="app-title"> Venyou </div>
                 <FontAwesomeIcon icon={faUser} className="user-icon" onClick={toggleUser} />
             </div>
+
             <div className="header-login">
                 { loggedIn && userBar ? <UserSidebar toggleUser={toggleUser} />  : null}
-                { !loggedIn && userBar ? <LogIn /> : null }
-            </div>
+                <div className="header-login-form">
+                    { !loggedIn && userBar ? <LogIn /> : null }
+                </div>
+            </div>    
+            
             <div className="header-search">
                 <SearchBar />
-            </div>                
+            </div>      
+                  
         </div>
     )
 }

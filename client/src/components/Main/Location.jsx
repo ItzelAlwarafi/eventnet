@@ -24,7 +24,7 @@ export default function Location () {
     } else {
         return (
             <div className='location-list-page'>
-                <div className='search-list-title'>Locations</div>
+                <div className='search-list-title'>All Locations</div>
                 <div className="search-list-grid">
                     {locations.map((location) => (
                         <div className="search-list-card" onClick={() => showType(location)} key={location._id}>
@@ -33,8 +33,8 @@ export default function Location () {
                             </div>
                             <div className="list-card-info">
                                 <div className="list-card-result-info">
-                                    <div className="text-title-24">{location.city}</div>
-                                    <div className="text-caps-14">{location.state} • {location.country}</div>
+                                    <div className="text-title-28">{location.city}</div>
+                                    <div className="text-caps-16">{location.state} • {location.country}</div>
                                 </div>
                                 <div className="list-card-button-container">
                                     <div className="list-card-button-explore">explore</div>
