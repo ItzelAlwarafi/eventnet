@@ -73,23 +73,15 @@ export default function Venue () {
     if (venue) {
     return (
         <div className="venue-detail-page">
-         
-            
             <div className="detail-header-container">
-<<<<<<< HEAD
-            <VenueCarousel/>
-                <div className="text-title-32">{venue.name}</div>
-                <FontAwesomeIcon icon={faShareFromSquare} />
-                { liked ? <FontAwesomeIcon icon={Liked} onClick={handleLike} /> : <FontAwesomeIcon icon={Unliked} onClick={handleLike} /> }
-=======
                 <div className="detail-header-primary">
+                    <VenueCarousel/>
                     <div className="text-title-32">{venue.name}</div>
                     <div className="header-interaction-icons">
                         <FontAwesomeIcon icon={faShareFromSquare} />
                         { liked ? <FontAwesomeIcon icon={Liked} onClick={handleLike} /> : <FontAwesomeIcon icon={Unliked} onClick={handleLike} /> }
                     </div>
                 </div>
->>>>>>> b012d207d89e0a0d3c39d60457b9ef39156d6a0a
                 <div className="text-caps-16">{venue.location.city}, {venue.location.state}, {venue.location.country}</div>
                 <div className="text-standard-14">{venue.street_address}</div>
                 <div className="text-standard-12">Hosted by {venue.owner.first_name ? venue.owner.first_name  : null} {venue.owner.last_name}</div>

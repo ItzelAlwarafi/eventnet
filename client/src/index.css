@@ -25,27 +25,27 @@
 }
 
 .VenueGalleryContainer{
-    width: 1000px;
-    height: 35vmax;
+    width: 400px;
+   height: 20vmax;
     margin-top: 5%;
-    margin-left: 40px;
-    
+    margin-left: 20px;
+   
 }
 .img-wrapper-Venue{
    width: 400px;
-    height: 600px
+    height: 600px;
     
 }
 .Venuegalleryimg{
     margin-left: 5%;
     margin-top: 10%;
-    width:35vmax;
-    height: 20vmax;
-    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+    width:20vmax;
+    height: 15vmax;
+    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.5);
    
 }
 .Venuegalleryimg:hover{
-    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.5);
 }
 
 .sidenav{
@@ -76,4 +76,18 @@
     margin: 15px;
     text-decoration: none;
     color:white
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    
+  }
+  .link-home-logo{
+    text-decoration: none;
+  }
+ 
+  
+  
+.BookContainer{
+    margin-top: 6em;
 }
