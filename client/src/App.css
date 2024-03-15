@@ -1,6 +1,6 @@
 body {
   width: 100vw;
-  display: flex;
+  display: block;
 }
 
 .BookContainer,.selectdiv {
@@ -495,6 +495,12 @@ form ~ .valid {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+.icon-click-boxes {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
 
 .search-list-title {
   font-family: "Bebas Neue";
@@ -588,6 +594,27 @@ form ~ .valid {
   font-family: "Roboto";
   color: white;
   background-color: black;
+}
+.detail-venue-booking-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.detail-venue-booking {
+  font-family: "Roboto";
+  color: white;
+  background-color: black;
+  width: 100px;
+  border-radius: 20px;
+  text-align: center;
+  padding: 10px 10px;
+
+  text-transform: capitalize;
+  font-size: 16px;
+
+  align-self: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .list-card-button-explore {
   font-family: "Roboto";
